@@ -2560,75 +2560,6 @@ body.page-transitioning .page-transition-overlay {
     color: var(--text);
   }
 
-  /* Drawer Theme Switcher Item */
-  .nav-theme-item {
-    display: none;
-    width: 100%;
-    margin-top: 10px;
-    padding-top: 10px;
-  }
-
-  .nav-drawer-theme-btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    min-height: var(--touch-min);
-    padding: 11px 18px;
-    border-radius: var(--radius-sm);
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    color: var(--text-soft);
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    box-sizing: border-box;
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
-  }
-
-  .nav-drawer-theme-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: var(--primary);
-    border-color: var(--border-brand);
-  }
-
-  .nav-drawer-theme-btn:active {
-    transform: scale(0.98);
-  }
-
-  .drawer-theme-text {
-    letter-spacing: 0.02em;
-  }
-
-  .drawer-theme-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.1);
-    color: inherit;
-    flex-shrink: 0;
-  }
-
-  [data-theme="light"] .nav-drawer-theme-btn {
-    background: rgba(30, 25, 22, 0.05);
-    border-color: rgba(30, 25, 22, 0.12);
-    color: var(--text);
-  }
-
-  [data-theme="light"] .nav-drawer-theme-btn:hover {
-    background: rgba(210, 35, 42, 0.06);
-    border-color: var(--primary);
-    color: var(--primary);
-  }
-
-  [data-theme="light"] .drawer-theme-icon {
-    background: rgba(30, 25, 22, 0.08);
-  }
-
   .nav-toggle {
     display: flex;
   }
@@ -2814,17 +2745,6 @@ body.page-transitioning .page-transition-overlay {
 
   .section-title {
     font-size: clamp(1.75rem, 7.5vw, 2.2rem);
-  }
-}
-
-/* Mobile Viewport Compact Header (under 422px: theme toggle inside hamburger drawer) */
-@media (max-width: 422px) {
-  .navbar .nav-actions > .theme-toggle {
-    display: none;
-  }
-
-  .nav-theme-item {
-    display: block;
   }
 }
 
