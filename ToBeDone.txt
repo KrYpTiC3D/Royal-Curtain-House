@@ -1,0 +1,3 @@
+1). The logo in the footer should use the white text instead of black for both dark and light mode. The font in the footer under the Collections, Showrooms and Company should use the lighter tone used under the logo text in the footer.
+
+2). Add a initial reveal animation on page scroll to every page.
