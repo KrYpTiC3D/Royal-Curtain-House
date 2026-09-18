@@ -3,45 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services | Royal Curtain House Sri Lanka</title>
-  <meta name="description" content="End-to-end bespoke curtain services: Free on-site laser measurement in Kandy, Matale & Kekirawa, custom tailoring, smart motorization, and professional installation with 5-year guarantee.">
+  <title>Island-Wide Services — Royal Curtain House (Matale)</title>
+  <meta name="description" content="Discover our 4-phase bespoke window treatment execution: complimentary island-wide laser measurement, precision workshop tailoring in Matale, smart motorization, and clean installation.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/svg+xml" href="images/logo-emblem.svg">
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
-
 </head>
 <body>
+
+  <!-- Three.js Ambient Liquid Fabric Wave Canvas -->
+  <canvas id="liquidCanvas"></canvas>
+
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
     <div class="container nav-inner">
-      <a href="index.html" class="logo" aria-label="Royal Curtain House (Pvt) Ltd">
+      <a href="index.html" class="logo" aria-label="Royal Curtain House Matale">
         <img src="images/logo-emblem.svg" alt="Royal Curtain House Emblem" class="logo-emblem-img" width="38" height="34">
         <span class="logo-text">
-          Royal Curtain House
-          <span class="logo-subtext">(Pvt) Ltd</span>
+          <span class="logo-main">Royal Curtain House</span>
+          <span class="logo-branch">Matale • Island-Wide Service</span>
         </span>
       </a>
+
       <div class="nav-actions">
         <ul class="nav-links" id="navLinks">
           <li><a href="index.html">Home</a></li>
           <li><a href="collections.html">Collections</a></li>
-          <li><a href="index.html#calculator">Sizing Engine</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="index.html#showrooms">Showrooms</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="https://wa.me/94773616237?text=Hello%20Royal%20Curtain%20House%2C%20I%20would%20like%20to%20book%20a%20free%20home%20measurement." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Free Quote</a></li>
+          <li><a href="services.html" class="active">Services</a></li>
+          <li><a href="contact.html">Contact & Showroom</a></li>
+          <li>
+            <a href="https://wa.me/94772273838?text=Hello%20Royal%20Curtain%20House%20(Matale)%2C%20I%20would%20like%20to%20inquire%20about%20your%20island-wide%20curtain%20services." class="btn btn-primary nav-consult-btn" data-magnetic target="_blank" rel="noopener noreferrer">Free Consultation</a>
+          </li>
+          <li class="drawer-theme-item">
+            <div class="drawer-theme-box">
+              <span class="drawer-theme-label">Appearance</span>
+              <button class="theme-toggle" id="drawerThemeToggle" aria-label="Switch to dark theme" title="Toggle theme">
+                <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                </svg>
+              </button>
+            </div>
+          </li>
         </ul>
-        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme" title="Toggle theme">
-          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme" title="Toggle theme">
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="4"></circle>
             <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
           </svg>
-          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
         </button>
+
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
         </button>
@@ -49,200 +68,172 @@
     </div>
   </nav>
 
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="container page-hero-inner">
-      <span class="section-badge">Full Architectural Service</span>
-      <h1>Measurement, Tailoring & Installation</h1>
-      <p>From on-site laser measuring across Central & North Central Sri Lanka to master workshop tailoring and smart motorization fitting.</p>
+  <!-- Page Header -->
+  <header class="page-header" data-reveal="fade-up">
+    <div class="container page-header-inner">
+      <span class="section-eyebrow">End-to-End Execution</span>
+      <h1 class="section-title">Island-Wide Window Treatment Services</h1>
+      <p class="section-subtitle">
+        From laser measurements at your doorstep anywhere in Sri Lanka to master workshop tailoring in Matale and dust-free professional installation.
+      </p>
     </div>
-  </section>
+  </header>
 
-  <!-- Services Grid Section -->
-  <section class="section services">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Comprehensive Offerings</span>
-        <h2 class="section-title">The Royal Standard of Service</h2>
-        <p class="section-subtitle">A seamless journey from concept and fabric selection to finished architectural installation.</p>
+  <!-- Main Content: 4 Service Pillars with Alternating Left and Right Reveals -->
+  <main class="section">
+    <div class="container container-narrow">
+
+      <!-- Service 01 (Slide Left) -->
+      <section class="service-feature-card" data-reveal="slide-left">
+        <div class="service-number">01</div>
+        <div>
+          <span class="section-eyebrow">Phase One</span>
+          <h2 class="service-feature-title">Island-Wide On-Site Measurement & Consultation</h2>
+          <p class="service-feature-text">
+            Our architectural drapery consultants visit your property anywhere in Sri Lanka—from private villas in Galle to luxury apartments in Colombo and hill-country estates in Kandy and Nuwara Eliya.
+          </p>
+          <p class="service-feature-text">
+            Using precision digital laser measures, we assess frame depth, ceiling recess clearance, stack-back space, and sun exposure angles. We bring comprehensive swatch books containing over 500+ direct-imported fabrics so you can evaluate textures under your room's natural lighting.
+          </p>
+          <div class="service-feature-tags">
+            <span class="service-tag">Laser Precision</span>
+            <span class="service-tag">Full Fabric Swatch Books</span>
+            <span class="service-tag">All 9 Provinces Covered</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Service 02 (Slide Right) -->
+      <section class="service-feature-card" data-reveal="slide-right">
+        <div class="service-number">02</div>
+        <div>
+          <span class="section-eyebrow">Phase Two</span>
+          <h2 class="service-feature-title">Master Tailoring in Our Matale Workshop</h2>
+          <p class="service-feature-text">
+            Every drapery order is tailored in our dedicated Matale master facility by artisans with over two decades of technical experience. 
+          </p>
+          <p class="service-feature-text">
+            We employ double-fold 4-inch bottom hems, hand-inserted drapery weights, invisible blind-stitching, and exact carrier spacing. Whether crafting ripple fold waves with calibrated fullness or triple pinch pleats, every panel hangs with fluid architectural uniformity.
+          </p>
+          <div class="service-feature-tags">
+            <span class="service-tag">Handcrafted in Matale</span>
+            <span class="service-tag">Weighted Hems</span>
+            <span class="service-tag">Direct Fabric Imports</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Service 03 (Slide Left) -->
+      <section class="service-feature-card" id="motorization" data-reveal="slide-left">
+        <div class="service-number">03</div>
+        <div>
+          <span class="section-eyebrow">Phase Three</span>
+          <h2 class="service-feature-title">Smart Motorization & Concealed Tracks</h2>
+          <p class="service-feature-text">
+            For contemporary smart homes and expansive high-ceiling double-height windows, we configure ultra-silent motorized tracks and automated roller/zebra cassettes.
+          </p>
+          <p class="service-feature-text">
+            Systems support rechargeable lithium-battery motors, hardwired line power, handheld multi-channel remotes, and direct smart home integration with Apple HomeKit, Alexa, Google Home, and Tuya.
+          </p>
+          <div class="service-feature-tags">
+            <span class="service-tag">Silent Motors (&lt; 30dB)</span>
+            <span class="service-tag">App & Voice Automation</span>
+            <span class="service-tag">Multi-Channel Remotes</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Service 04 (Slide Right) -->
+      <section class="service-feature-card" data-reveal="slide-right">
+        <div class="service-number">04</div>
+        <div>
+          <span class="section-eyebrow">Phase Four</span>
+          <h2 class="service-feature-title">Turnkey Installation & Steam Dressing</h2>
+          <p class="service-feature-text">
+            Our specialized installation crew arrives on site with dust-free containment equipment, commercial steamers, and structural anchors suitable for concrete, drywall, and timber soffits.
+          </p>
+          <p class="service-feature-text">
+            After structural mounting, curtains are professionally dressed and memory-steamed on the track to lock in pleat memory, leaving your space clean, pristine, and ready to enjoy.
+          </p>
+          <div class="service-feature-tags">
+            <span class="service-tag">Dust-Free Mounting</span>
+            <span class="service-tag">Memory Steam Dressing</span>
+            <span class="service-tag">Full Warranty Support</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Focused Consultation Banner -->
+      <div class="cta-banner" data-reveal="fade-up">
+        <span class="section-eyebrow">Start Your Project</span>
+        <h2 class="cta-banner-title">Ready for an On-Site Consultation?</h2>
+        <p class="cta-banner-desc">
+          Connect directly with our Matale showroom team to schedule a measurement visit anywhere in Sri Lanka.
+        </p>
+        <div class="cta-banner-actions">
+          <a href="https://wa.me/94772273838?text=Hello%20Royal%20Curtain%20House%20(Matale)%2C%20I%20would%20like%20to%20book%20a%20free%20window%20measurement%20consultation." class="btn btn-primary" data-magnetic target="_blank" rel="noopener noreferrer">Book On-Site Measurement</a>
+          <a href="contact.html" class="btn btn-secondary">Showroom Information</a>
+        </div>
       </div>
 
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 64 64" fill="none"><rect x="8" y="4" width="48" height="56" rx="3" stroke="#C8A961" stroke-width="2"/><line x1="8" y1="16" x2="56" y2="16" stroke="#C8A961" stroke-width="1.5"/><path d="M16 24 L16 52" stroke="#C8A961" stroke-width="1.5"/><path d="M28 24 L28 52" stroke="#C8A961" stroke-width="1.5"/><path d="M40 24 L40 52" stroke="#C8A961" stroke-width="1.5"/><path d="M52 24 L52 52" stroke="#C8A961" stroke-width="1.5"/><path d="M20 60 L44 60" stroke="#C8A961" stroke-width="2"/></svg>
-          </div>
-          <h3>Free On-Site Laser Measurement</h3>
-          <p>Technicians from our Katugastota, Kekirawa, or Matale branches visit your home or business to take precision measurements with full fabric swatches — completely free of charge.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="26" stroke="#C8A961" stroke-width="2"/><path d="M32 16 L32 32 L42 38" stroke="#C8A961" stroke-width="2" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Design & Textile Consultation</h3>
-          <p>Work directly with our window fashion specialists to balance light filtration, privacy, and thermal cooling for your specific architectural floor plan.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 64 64" fill="none"><path d="M12 52 L20 36 L32 44 L44 28 L52 36" stroke="#C8A961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="36" r="3" fill="#C8A961"/><circle cx="32" cy="44" r="3" fill="#C8A961"/><circle cx="44" cy="28" r="3" fill="#C8A961"/><circle cx="52" cy="36" r="3" fill="#C8A961"/></svg>
-          </div>
-          <h3>Bespoke In-House Tailoring</h3>
-          <p>Crafted in our dedicated workshop with weighted corner corners, precision wave spacing, and double-turned hems to guarantee perfectly uniform folds.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 64 64" fill="none"><rect x="6" y="8" width="52" height="48" rx="3" stroke="#C8A961" stroke-width="2"/><path d="M6 20 L58 20" stroke="#C8A961" stroke-width="1.5"/><path d="M20 8 L20 16" stroke="#C8A961" stroke-width="2"/><path d="M44 8 L44 16" stroke="#C8A961" stroke-width="2"/></svg>
-          </div>
-          <h3>Professional Track & Rod Fitting</h3>
-          <p>Our experienced fitters mount ceiling-recessed ripple tracks, brass rods, and outdoor monsoon brackets securely, leaving your interior spotless.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 64 64" fill="none"><path d="M16 52 L16 20 L32 8 L48 20 L48 52" stroke="#C8A961" stroke-width="2" stroke-linejoin="round"/><rect x="26" y="36" width="12" height="16" stroke="#C8A961" stroke-width="1.5"/><line x1="32" y1="36" x2="32" y2="44" stroke="#C8A961" stroke-width="1"/></svg>
-          </div>
-          <h3>Smart Home Motorization</h3>
-          <p>Upgrade to motorized curtains and zebra blinds with silent DC motors, wireless wall switches, smartphone app automation, and voice control via Google Assistant & Apple Home.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 64 64" fill="none"><path d="M32 12 L38 24 L50 24 L40 32 L44 44 L32 36 L20 44 L24 32 L14 24 L26 24 Z" stroke="#C8A961" stroke-width="2" stroke-linejoin="round"/><circle cx="32" cy="28" r="6" stroke="#C8A961" stroke-width="1.5"/></svg>
-          </div>
-          <h3>5-Year Workmanship Guarantee</h3>
-          <p>We stand firmly behind our craft. Every bespoke tailoring job, track mechanism, and motor system is backed by our comprehensive 5-year guarantee.</p>
-        </div>
-      </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Regional Coverage Section -->
-  <section class="coverage-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Regional Service Coverage</span>
-        <h2 class="section-title">Where We Serve Across Sri Lanka</h2>
-        <p class="section-subtitle">Dedicated mobile measurement teams covering Central and North Central provinces.</p>
-      </div>
-
-      <div class="coverage-grid">
-        <div class="coverage-card">
-          <div>
-            <h4>Kandy District & Central Hills</h4>
-            <p>Katugastota, Kandy City, Peradeniya, Kundasale, Digana, Gampola, and Nawalapitiya.</p>
-          </div>
-          <a href="https://wa.me/94776466680?text=Hello%20Katugastota%20Showroom%2C%20I%20need%20a%20home%20measurement%20in%20Kandy." class="btn btn-small btn-primary" target="_blank" rel="noopener noreferrer">Book Kandy Visit</a>
-        </div>
-
-        <div class="coverage-card">
-          <div>
-            <h4>North Central & A9 Transit Corridor</h4>
-            <p>Kekirawa, Anuradhapura, Dambulla, Habarana, Galnewa, and surrounding commercial projects.</p>
-          </div>
-          <a href="https://wa.me/94773616237?text=Hello%20Kekirawa%20Showroom%2C%20I%20need%20a%20home%20measurement%20in%20North%20Central." class="btn btn-small btn-primary" target="_blank" rel="noopener noreferrer">Book Kekirawa Visit</a>
-        </div>
-
-        <div class="coverage-card">
-          <div>
-            <h4>Matale District & Heritage Estates</h4>
-            <p>Matale Town, Trincomalee Street, Ukuwela, Rattota, Naula, and boutique villa restorations.</p>
-          </div>
-          <a href="https://wa.me/94772273838?text=Hello%20Matale%20Showroom%2C%20I%20need%20a%20home%20measurement%20in%20Matale." class="btn btn-small btn-primary" target="_blank" rel="noopener noreferrer">Book Matale Visit</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process Section -->
-  <section class="process-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Simple & Streamlined</span>
-        <h2 class="section-title">Four Steps to Dressed Windows</h2>
-      </div>
-
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="step-number">01</div>
-          <div class="step-line"></div>
-          <h3>Consult</h3>
-          <p>Share your room photos, window counts, and aesthetic vision on WhatsApp or at our showrooms.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">02</div>
-          <div class="step-line"></div>
-          <h3>Free Measure</h3>
-          <p>Our technicians visit with fabric rolls to capture millimeter-exact window dimensions.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">03</div>
-          <div class="step-line"></div>
-          <h3>Handcraft</h3>
-          <p>Master tailors stitch your drapes with reinforced heading tapes and weighted hems.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">04</div>
-          <h3>Fit & Guarantee</h3>
-          <p>Trained fitters mount tracks and steam-dress your drapes, backed by our 5-year guarantee.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
+  <!-- Minimalist Liquid Glass Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo">
-            <img src="images/logo-emblem.svg" alt="Royal Curtain House Emblem" class="logo-emblem-img" width="38" height="34">
-            <span class="logo-text">
-              Royal Curtain House
-              <span class="logo-subtext">(Pvt) Ltd</span>
-            </span>
-          </div>
-          <p>Sri Lanka's trusted architectural drapery and blind specialist since 1998. Showrooms in Kekirawa, Katugastota, and Matale.</p>
+        <div>
+          <div class="footer-brand-title">Royal Curtain House</div>
+          <p class="footer-text">Sri Lanka's architectural window treatment specialists. Master workshop in Matale delivering precision wave drapes, zebra blinds, and motorization island-wide.</p>
+          <span class="footer-tag">Handcrafted in Matale • Serving Island-Wide</span>
         </div>
-        <div class="footer-col">
-          <h4>Collections</h4>
-          <ul>
-            <li><a href="collections.html">Ripple Fold Wave Curtains</a></li>
-            <li><a href="collections.html">Zebra Day & Night Blinds</a></li>
-            <li><a href="collections.html">Nightfall Blackout Drapes</a></li>
-            <li><a href="collections.html">Outdoor Monsoon Blinds</a></li>
-            <li><a href="collections.html">Belgian Linen & Sheers</a></li>
+
+        <div>
+          <div class="footer-heading">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact & Showroom</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>Showrooms</h4>
-          <ul>
-            <li><a href="index.html#showrooms">Kekirawa — A9 Highway (077 361 6237)</a></li>
-            <li><a href="index.html#showrooms">Katugastota — Kandy (077 646 6680)</a></li>
-            <li><a href="index.html#showrooms">Matale — Trincomalee St (077 227 3838)</a></li>
-            <li><a href="index.html#calculator">Sizing Engine</a></li>
+
+        <div>
+          <div class="footer-heading">Services</div>
+          <ul class="footer-links">
+            <li><a href="services.html">On-Site Measurement</a></li>
+            <li><a href="services.html">In-House Tailoring</a></li>
+            <li><a href="services.html#motorization">Smart Motorization</a></li>
+            <li><a href="services.html">Steam Dressing</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">Our 25-Year Heritage</a></li>
-            <li><a href="index.html#testimonials">Client Reviews</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="services.html">5-Year Guarantee</a></li>
-          </ul>
+
+        <div>
+          <div class="footer-heading">Matale Showroom</div>
+          <p class="footer-text footer-address">No 553, Trincomalee Street,<br>Matale 21000, Sri Lanka</p>
+          <p class="footer-text">
+            <strong>Hotline:</strong> <a href="tel:+94772273838" class="footer-phone-link">+94 77 227 3838</a><br>
+            <strong>Service:</strong> Island-Wide Coverage
+          </p>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <p>&copy; 2026 Royal Curtain House (Pvt) Ltd. All rights reserved. Registered in Sri Lanka.</p>
-        <p>Showrooms in Kekirawa, Katugastota & Matale.</p>
+        <span>&copy; 1998–2026 Royal Curtain House (Pvt) Ltd • Matale Branch. All rights reserved.</span>
+        <span>Architectural Drapery & Smart Window Systems</span>
       </div>
     </div>
   </footer>
 
+  <!-- Self-Hosted Local Scripts (100% Offline, Zero CDNs) -->
+  <script src="js/vendor/three.min.js"></script>
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
   <script src="js/common.js"></script>
+  <script src="js/liquid-shader.js"></script>
+  <script src="js/motion.js"></script>
   <script src="js/services.js"></script>
 </body>
 </html>

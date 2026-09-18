@@ -1,8 +1,8 @@
 /**
- * Royal Curtain House — Contact Page Specific JavaScript (contact.js)
+ * Royal Curtain House (Matale Branch) — Contact Page Specific JavaScript (contact.js)
  * Dedicated functionality for contact.html:
- * - Contact inquiry form validation and submission
- * - Showroom branch routing and pre-populated WhatsApp dispatch
+ * - Island-Wide Consultation & Measurement inquiry form validation
+ * - Direct WhatsApp dispatch to the Matale Showroom (+94 77 227 3838)
  */
 
 (function () {
@@ -16,48 +16,55 @@
       event.preventDefault();
 
       const formData = new FormData(contactForm);
-      const firstName = (formData.get('firstName') || '').toString().trim();
-      const lastName = (formData.get('lastName') || '').toString().trim();
-      const email = (formData.get('email') || '').toString().trim();
+      const name = (formData.get('name') || '').toString().trim();
       const phone = (formData.get('phone') || '').toString().trim();
-      const branchKey = (formData.get('branch') || 'general').toString().trim();
+      const city = (formData.get('city') || '').toString().trim();
       const service = (formData.get('service') || '').toString().trim();
       const messageText = (formData.get('message') || '').toString().trim();
       const messageEl = contactForm.querySelector('.form-note');
 
-      if (!firstName || !lastName || !email) {
+      if (!name || !phone) {
         if (messageEl) {
-          messageEl.textContent = 'Please complete all required fields (* marked) before submitting your WhatsApp inquiry.';
-          messageEl.style.color = '#e07a7a';
+          messageEl.textContent = 'Please provide your name and contact phone number.';
+          messageEl.classList.add('error');
         }
         return;
       }
 
-      const branchInfo = (window.RoyalApp && RoyalApp.BRANCHES && RoyalApp.BRANCHES[branchKey])
-        ? RoyalApp.BRANCHES[branchKey]
-        : { name: 'Royal Curtain House', whatsapp: '94773616237' };
+      const showroom = (window.RoyalApp && RoyalApp.MATALE_SHOWROOM)
+        ? RoyalApp.MATALE_SHOWROOM
+        : { name: 'Royal Curtain House (Matale)', whatsapp: '94772273838' };
+
+      const summaryDetails = {
+        name,
+        phone,
+        city: city || 'Island-Wide Consultation',
+        service: service || 'Bespoke Curtains & Blinds',
+        message: messageText || 'I would like to request an on-site window measurement & fabric consultation.'
+      };
 
       if (window.RoyalApp && RoyalApp.openWhatsApp) {
-        RoyalApp.openWhatsApp({
-          name: `${firstName} ${lastName}`,
-          email,
-          phone,
-          branch: branchInfo.name,
-          service: service || 'Curtain & Blind Consultation',
-          message: messageText || 'I would like to request a quotation & free home measurement.'
-        }, branchKey);
+        RoyalApp.openWhatsApp(summaryDetails);
       } else {
-        const text = encodeURIComponent(`Hello ${branchInfo.name},\nMy name is ${firstName} ${lastName}.\nPhone: ${phone}\nEmail: ${email}\nService: ${service}\nDetails: ${messageText}`);
-        window.open(`https://wa.me/${branchInfo.whatsapp}?text=${text}`, '_blank');
+        const textLines = [
+          'Hello Royal Curtain House (Matale),',
+          `My name is ${name}.`,
+          `Phone: ${phone}`,
+          city ? `Location: ${city}` : '',
+          `Service: ${service}`,
+          messageText ? `Details: ${messageText}` : 'I would like to schedule an on-site measurement & consultation.',
+          'Please let me know availability for island-wide service.'
+        ].filter(Boolean);
+        window.open(`https://wa.me/${showroom.whatsapp}?text=${encodeURIComponent(textLines.join('\n'))}`, '_blank');
       }
 
       if (messageEl) {
-        messageEl.textContent = `Connecting you to our ${branchInfo.name} WhatsApp line...`;
-        messageEl.style.color = '#7ad29e';
+        messageEl.textContent = 'Connecting you to our Matale Showroom on WhatsApp...';
+        messageEl.classList.remove('error');
+        messageEl.classList.add('success');
       }
 
       contactForm.reset();
     });
   });
 })();
-

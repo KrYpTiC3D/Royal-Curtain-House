@@ -3,45 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curtain & Blind Collections | Royal Curtain House Sri Lanka</title>
-  <meta name="description" content="Explore architectural wave ripple-fold curtains, modern zebra blinds, 100% thermal blackout drapes, and outdoor monsoon blinds. Showrooms in Katugastota (Kandy), Kekirawa & Matale.">
+  <title>Architectural Window Collections — Royal Curtain House (Matale)</title>
+  <meta name="description" content="Explore custom ripple fold wave curtains, day & night zebra blinds, 100% thermal blackout drapery, and motorized systems. Handcrafted in Matale and installed island-wide in Sri Lanka.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/svg+xml" href="images/logo-emblem.svg">
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
-
 </head>
 <body>
+
+  <!-- Three.js Ambient Liquid Fabric Wave Canvas -->
+  <canvas id="liquidCanvas"></canvas>
+
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
     <div class="container nav-inner">
-      <a href="index.html" class="logo" aria-label="Royal Curtain House (Pvt) Ltd">
+      <a href="index.html" class="logo" aria-label="Royal Curtain House Matale">
         <img src="images/logo-emblem.svg" alt="Royal Curtain House Emblem" class="logo-emblem-img" width="38" height="34">
         <span class="logo-text">
-          Royal Curtain House
-          <span class="logo-subtext">(Pvt) Ltd</span>
+          <span class="logo-main">Royal Curtain House</span>
+          <span class="logo-branch">Matale • Island-Wide Service</span>
         </span>
       </a>
+
       <div class="nav-actions">
         <ul class="nav-links" id="navLinks">
           <li><a href="index.html">Home</a></li>
-          <li><a href="collections.html">Collections</a></li>
-          <li><a href="index.html#calculator">Sizing Engine</a></li>
+          <li><a href="collections.html" class="active">Collections</a></li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="index.html#showrooms">Showrooms</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="https://wa.me/94773616237?text=Hello%20Royal%20Curtain%20House%2C%20I%20would%20like%20to%20request%20a%20free%20consultation." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Free Consultation</a></li>
+          <li><a href="contact.html">Contact & Showroom</a></li>
+          <li>
+            <a href="https://wa.me/94772273838?text=Hello%20Royal%20Curtain%20House%20(Matale)%2C%20I%20would%20like%20to%20inquire%20about%20your%20curtain%20collections." class="btn btn-primary nav-consult-btn" data-magnetic target="_blank" rel="noopener noreferrer">Free Consultation</a>
+          </li>
+          <li class="drawer-theme-item">
+            <div class="drawer-theme-box">
+              <span class="drawer-theme-label">Appearance</span>
+              <button class="theme-toggle" id="drawerThemeToggle" aria-label="Switch to dark theme" title="Toggle theme">
+                <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                </svg>
+              </button>
+            </div>
+          </li>
         </ul>
-        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme" title="Toggle theme">
-          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme" title="Toggle theme">
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="4"></circle>
             <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
           </svg>
-          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
         </button>
+
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
         </button>
@@ -49,241 +68,247 @@
     </div>
   </nav>
 
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="container page-hero-inner">
-      <span class="section-badge">Direct Importer Catalog</span>
-      <h1>Architectural Window Collections</h1>
-      <p>From contemporary S-fold wave drapes to precision zebra and monsoon blinds. Handcrafted in Sri Lanka with over 500+ direct-imported fabrics.</p>
+  <!-- Page Header -->
+  <header class="page-header" data-reveal="fade-up">
+    <div class="container page-header-inner">
+      <span class="section-eyebrow">Direct Importer Catalog</span>
+      <h1 class="section-title">Architectural Window Collections</h1>
+      <p class="section-subtitle">
+        From fluid S-curve wave curtains to precision zebra blinds and smart motorized systems. Handcrafted in our Matale workshop with over 500+ direct-imported fabrics.
+      </p>
     </div>
-  </section>
+  </header>
 
-  <!-- Collections Grid Section -->
-  <section class="section products" id="products">
+  <!-- Catalog Section -->
+  <main class="section">
     <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Custom Tailored</span>
-        <h2 class="section-title">Engineered for Tropical Living & Modern Design</h2>
-        <p class="section-subtitle">Custom made to fit your architectural window dimensions. Free on-site laser measurement across Kandy, Matale, and Kekirawa.</p>
+      <!-- Filter Bar -->
+      <div class="filter-bar" role="tablist" aria-label="Filter collections" data-reveal="fade-up">
+        <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All Treatments</button>
+        <button class="filter-tab" data-filter="wave" role="tab" aria-selected="false">Wave Curtains</button>
+        <button class="filter-tab" data-filter="modern" role="tab" aria-selected="false">Zebra Blinds</button>
+        <button class="filter-tab" data-filter="blackout" role="tab" aria-selected="false">100% Blackout</button>
+        <button class="filter-tab" data-filter="sheer" role="tab" aria-selected="false">Sheers & Voiles</button>
       </div>
 
-      <!-- Filter Tabs -->
-      <div class="filter-tabs">
-        <button class="filter-tab active" data-filter="all">All Styles</button>
-        <button class="filter-tab" data-filter="wave">Wave Curtains</button>
-        <button class="filter-tab" data-filter="modern">Zebra & Roller Blinds</button>
-        <button class="filter-tab" data-filter="blackout">Blackout & Monsoon</button>
-        <button class="filter-tab" data-filter="sheer">Linen & Sheers</button>
+      <!-- Catalog Grid with Alternating Left and Right Reveals -->
+      <div class="catalog-grid" data-reveal-group>
+        <!-- 1: Ripple Fold -->
+        <article class="product-card" data-category="wave" data-reveal-item data-reveal="slide-left">
+          <div class="product-thumb">
+            <svg viewBox="0 0 400 240" fill="none">
+              <rect width="400" height="240" fill="#f4f2ee"/>
+              <path d="M40 30 Q70 20 100 30 T160 30 T220 30 T280 30 T340 30 L340 210 Q280 210 220 210 T100 210 L40 210 Z" fill="#007a3d" fill-opacity="0.12"/>
+              <path d="M40 30 C70 50 70 190 40 210 M100 30 C130 50 130 190 100 210 M160 30 C190 50 190 190 160 210 M220 30 C250 50 250 190 220 210 M280 30 C310 50 310 190 280 210" stroke="#007a3d" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="30" y1="26" x2="350" y2="26" stroke="#f58220" stroke-width="3"/>
+            </svg>
+            <span class="product-badge">Architectural Favorite</span>
+          </div>
+          <div class="product-body">
+            <span class="product-cat">Continuous Wave</span>
+            <h2 class="product-title">Ripple Fold Wave Drapery</h2>
+            <p class="product-desc">Flawlessly consistent S-fold drapery engineered for ceiling recesses and floor-to-ceiling glass expanses. Glides silently without bunching.</p>
+            <div class="product-specs">
+              <span>Fullness: 2.0x – 2.4x</span>
+              <span>Available Island-Wide</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2: Modern Zebra Blinds -->
+        <article class="product-card" data-category="modern" data-reveal-item data-reveal="slide-right">
+          <div class="product-thumb">
+            <svg viewBox="0 0 400 240" fill="none">
+              <rect width="400" height="240" fill="#f4f2ee"/>
+              <rect x="70" y="30" width="260" height="18" fill="#e6e2dc"/>
+              <rect x="70" y="55" width="260" height="20" fill="#007a3d" fill-opacity="0.15"/>
+              <rect x="70" y="80" width="260" height="18" fill="#e6e2dc"/>
+              <rect x="70" y="105" width="260" height="20" fill="#007a3d" fill-opacity="0.15"/>
+              <rect x="70" y="130" width="260" height="18" fill="#e6e2dc"/>
+              <rect x="70" y="155" width="260" height="20" fill="#007a3d" fill-opacity="0.15"/>
+              <rect x="70" y="180" width="260" height="18" fill="#e6e2dc"/>
+              <rect x="65" y="20" width="270" height="10" fill="#f58220"/>
+            </svg>
+            <span class="product-badge">Day & Night</span>
+          </div>
+          <div class="product-body">
+            <span class="product-cat">Precision Blinds</span>
+            <h2 class="product-title">Day & Night Zebra Blinds</h2>
+            <p class="product-desc">Dual-layer sliding stripes of sheer voile and opaque textiles. Effortless natural light calibration without lifting the blind.</p>
+            <div class="product-specs">
+              <span>Mechanism: Cassette Roller</span>
+              <span>Available Island-Wide</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3: 100% Thermal Blackout -->
+        <article class="product-card" data-category="blackout" data-reveal-item data-reveal="slide-left">
+          <div class="product-thumb">
+            <svg viewBox="0 0 400 240" fill="none">
+              <rect width="400" height="240" fill="#221e1b"/>
+              <path d="M70 30 L70 210 M135 30 L135 210 M200 30 L200 210 M265 30 L265 210 M330 30 L330 210" stroke="#f58220" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <rect x="75" y="30" width="250" height="180" fill="#1a1715" fill-opacity="0.8"/>
+              <line x1="60" y1="25" x2="340" y2="25" stroke="#007a3d" stroke-width="4"/>
+            </svg>
+            <span class="product-badge">Thermal Defense</span>
+          </div>
+          <div class="product-body">
+            <span class="product-cat">Thermal & Acoustic</span>
+            <h2 class="product-title">Nightfall 100% Blackout</h2>
+            <p class="product-desc">Triple-weave dense weave blocking 100% of tropical ultraviolet sunlight and midday solar heat. Essential for master bedrooms and media suites.</p>
+            <div class="product-specs">
+              <span>Light Block: 100% Complete</span>
+              <span>Available Island-Wide</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4: Sheers & Voiles -->
+        <article class="product-card" data-category="sheer" data-reveal-item data-reveal="slide-right">
+          <div class="product-thumb">
+            <svg viewBox="0 0 400 240" fill="none">
+              <rect width="400" height="240" fill="#fafaf8"/>
+              <path d="M50 30 Q100 40 150 30 T250 30 T350 30 L350 210 Q250 210 150 210 L50 210 Z" fill="#007a3d" fill-opacity="0.05"/>
+              <line x1="80" y1="30" x2="80" y2="210" stroke="#c8a961" stroke-width="1.5" stroke-dasharray="2 4"/>
+              <line x1="160" y1="30" x2="160" y2="210" stroke="#c8a961" stroke-width="1.5" stroke-dasharray="2 4"/>
+              <line x1="240" y1="30" x2="240" y2="210" stroke="#c8a961" stroke-width="1.5" stroke-dasharray="2 4"/>
+              <line x1="320" y1="30" x2="320" y2="210" stroke="#c8a961" stroke-width="1.5" stroke-dasharray="2 4"/>
+              <line x1="40" y1="24" x2="360" y2="24" stroke="#007a3d" stroke-width="2"/>
+            </svg>
+            <span class="product-badge">Airy & Serene</span>
+          </div>
+          <div class="product-body">
+            <span class="product-cat">Light Filtering</span>
+            <h2 class="product-title">Cloud Sheer & Linen Voile</h2>
+            <p class="product-desc">Gentle translucent textiles that diffuse harsh tropical glare into a soft, ambient glow while maintaining daytime exterior privacy.</p>
+            <div class="product-specs">
+              <span>Fabric: Belgian Linen / Poly Voile</span>
+              <span>Available Island-Wide</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5: French Pinch Pleat -->
+        <article class="product-card" data-category="wave" data-reveal-item data-reveal="slide-left">
+          <div class="product-thumb">
+            <svg viewBox="0 0 400 240" fill="none">
+              <rect width="400" height="240" fill="#f4f2ee"/>
+              <path d="M60 40 L60 210 M140 40 L140 210 M220 40 L220 210 M300 40 L300 210" stroke="#007a3d" stroke-width="2"/>
+              <rect x="52" y="30" width="16" height="24" fill="#f58220"/>
+              <rect x="132" y="30" width="16" height="24" fill="#f58220"/>
+              <rect x="212" y="30" width="16" height="24" fill="#f58220"/>
+              <rect x="292" y="30" width="16" height="24" fill="#f58220"/>
+              <line x1="40" y1="26" x2="360" y2="26" stroke="#221e1b" stroke-width="3"/>
+            </svg>
+            <span class="product-badge">Heritage Tailoring</span>
+          </div>
+          <div class="product-body">
+            <span class="product-cat">Classic Drapery</span>
+            <h2 class="product-title">French Pinch Pleat (Triple Fold)</h2>
+            <p class="product-desc">Masterfully hand-pinched triple pleats delivering formal architectural volume and deep, structured fabric folds.</p>
+            <div class="product-specs">
+              <span>Fullness: 2.6x Fullness</span>
+              <span>Available Island-Wide</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6: Motorized Smart Systems -->
+        <article class="product-card" data-category="modern" data-reveal-item data-reveal="slide-right">
+          <div class="product-thumb">
+            <svg viewBox="0 0 400 240" fill="none">
+              <rect width="400" height="240" fill="#f4f2ee"/>
+              <rect x="40" y="24" width="320" height="12" fill="#007a3d"/>
+              <rect x="330" y="36" width="30" height="50" fill="#f58220"/>
+              <path d="M70 40 L70 200 M130 40 L130 200 M190 40 L190 200 M250 40 L250 200" stroke="#007a3d" stroke-width="1.8" stroke-dasharray="3 3"/>
+              <circle cx="200" cy="120" r="28" stroke="#007a3d" stroke-width="2" fill="#ffffff"/>
+              <path d="M192 120 L208 120 M200 112 L200 128" stroke="#007a3d" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span class="product-badge">Smart Automation</span>
+          </div>
+          <div class="product-body">
+            <span class="product-cat">Motorized Automation</span>
+            <h2 class="product-title">Smart Motorized Tracks & Blinds</h2>
+            <p class="product-desc">Ultra-quiet motorized tracks compatible with Somfy, Tuya, Apple HomeKit, Alexa, and wireless wall remotes.</p>
+            <div class="product-specs">
+              <span>Control: Remote, App & Voice</span>
+              <span>Available Island-Wide</span>
+            </div>
+          </div>
+        </article>
       </div>
 
-      <div class="products-grid">
-
-        <!-- Product 1: Ripple Fold Wave Curtains -->
-        <div class="product-card" data-category="wave">
-          <div class="product-image">
-            <div class="product-img-placeholder modern-img">
-              <svg viewBox="0 0 200 260" fill="none"><rect width="200" height="260" fill="#EAE5DE"/><path d="M30 30 Q55 130 30 230" stroke="#C8A961" stroke-width="3" fill="none"/><path d="M70 30 Q95 130 70 230" stroke="#C8A961" stroke-width="3" fill="none"/><path d="M110 30 Q135 130 110 230" stroke="#C8A961" stroke-width="3" fill="none"/><path d="M150 30 Q175 130 150 230" stroke="#C8A961" stroke-width="3" fill="none"/><rect x="20" y="20" width="160" height="10" rx="2" fill="#B29656"/></svg>
-            </div>
-            <span class="product-tag">#1 Contemporary</span>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Architectural Wave</span>
-            <h3 class="product-name">Ripple Fold (Wave) System</h3>
-            <p class="product-desc">Continuous fluid S-curve drapery folds on silent-glide tracks. Designed for ceiling-recessed modern villa glass walls.</p>
-            <div class="product-footer">
-              <span class="product-badge-clean">Bespoke Made-to-Measure</span>
-              <a href="https://wa.me/94773616237?text=Hello%20Royal%20Curtain%20House%2C%20I%20am%20interested%20in%20Ripple%20Fold%20Wave%20Curtains." class="btn btn-small" target="_blank" rel="noopener noreferrer">Inquire</a>
-            </div>
-          </div>
+      <!-- Focused Consultation Banner -->
+      <div class="cta-banner" data-reveal="fade-up">
+        <span class="section-eyebrow">Physical Swatch Consultation</span>
+        <h2 class="cta-banner-title">Need Physical Swatches at Your Location?</h2>
+        <p class="cta-banner-desc">
+          Our master consultants travel to homes, villas, and commercial properties anywhere in Sri Lanka with full sample swatches and laser measurement tools.
+        </p>
+        <div class="cta-banner-actions">
+          <a href="https://wa.me/94772273838?text=Hello%20Royal%20Curtain%20House%20(Matale)%2C%20I%20would%20like%20to%20request%20an%20on-site%20fabric%20swatch%20visit." class="btn btn-primary" data-magnetic target="_blank" rel="noopener noreferrer">Request On-Site Swatch Visit</a>
+          <a href="contact.html" class="btn btn-secondary">Visit Matale Showroom</a>
         </div>
-
-        <!-- Product 2: Zebra Blinds (Day & Night) -->
-        <div class="product-card" data-category="modern">
-          <div class="product-image">
-            <div class="product-img-placeholder modern-img2">
-              <svg viewBox="0 0 200 260" fill="none"><rect width="200" height="260" fill="#F0EDE8"/><rect x="30" y="40" width="140" height="15" fill="#C8A961"/><rect x="30" y="65" width="140" height="15" fill="#E0DAD0"/><rect x="30" y="90" width="140" height="15" fill="#C8A961"/><rect x="30" y="115" width="140" height="15" fill="#E0DAD0"/><rect x="30" y="140" width="140" height="15" fill="#C8A961"/><rect x="30" y="165" width="140" height="15" fill="#E0DAD0"/><rect x="30" y="190" width="140" height="15" fill="#C8A961"/><rect x="25" y="25" width="150" height="12" rx="3" fill="#8E733D"/></svg>
-            </div>
-            <span class="product-tag product-tag-new">Day & Night</span>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Light Control Blinds</span>
-            <h3 class="product-name">Modern Zebra Blinds</h3>
-            <p class="product-desc">Dual-layer sheer & opaque stripes. Smooth sunlight calibration without raising the blind. High demand in modern Sri Lankan apartments.</p>
-            <div class="product-footer">
-              <span class="product-badge-clean">Precision Sized</span>
-              <a href="https://wa.me/94773616237?text=Hello%20Royal%20Curtain%20House%2C%20I%20am%20interested%20in%20Modern%20Zebra%20Blinds." class="btn btn-small" target="_blank" rel="noopener noreferrer">Inquire</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 3: Nightfall 100% Blackout Drapes -->
-        <div class="product-card" data-category="blackout">
-          <div class="product-image">
-            <div class="product-img-placeholder blackout-img">
-              <svg viewBox="0 0 200 260" fill="none"><rect width="200" height="260" fill="#2E2824"/><path d="M35 20 L35 240" stroke="#1E1916" stroke-width="2"/><path d="M165 20 L165 240" stroke="#1E1916" stroke-width="2"/><rect x="35" y="20" width="130" height="220" rx="1" fill="#443C37"/><rect x="30" y="15" width="140" height="12" rx="2" fill="#C8A961"/></svg>
-            </div>
-            <span class="product-tag">Thermal Defense</span>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Blackout & Thermal</span>
-            <h3 class="product-name">Nightfall 100% Blackout</h3>
-            <p class="product-desc">Triple-weave high-density thermal fabric that completely blocks tropical afternoon heat and UV glare, keeping interiors cool.</p>
-            <div class="product-footer">
-              <span class="product-badge-clean">100% Light Block</span>
-              <a href="https://wa.me/94773616237?text=Hello%20Royal%20Curtain%20House%2C%20I%20am%20interested%20in%20Nightfall%20Blackout%20Curtains." class="btn btn-small" target="_blank" rel="noopener noreferrer">Inquire</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 4: Outdoor Monsoon Blinds -->
-        <div class="product-card" data-category="blackout">
-          <div class="product-image">
-            <div class="product-img-placeholder classic-img">
-              <svg viewBox="0 0 200 260" fill="none"><rect width="200" height="260" fill="#D6E0E6"/><rect x="30" y="30" width="140" height="200" rx="3" fill="#B4C7D0" fill-opacity="0.6" stroke="#688B9E" stroke-width="2"/><line x1="30" y1="80" x2="170" y2="80" stroke="#688B9E" stroke-width="1.5"/><line x1="30" y1="140" x2="170" y2="140" stroke="#688B9E" stroke-width="1.5"/><rect x="25" y="22" width="150" height="12" rx="3" fill="#446170"/></svg>
-            </div>
-            <span class="product-tag">Weather Guard</span>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Outdoor Blinds</span>
-            <h3 class="product-name">Sauleda Monsoon Blinds</h3>
-            <p class="product-desc">0.75mm heavy-gauge clear transparent and Sauleda weather-proof fabric. Shields balconies, patios, and restaurants from monsoon rains.</p>
-            <div class="product-footer">
-              <span class="product-badge-clean">0.75mm Heavy Gauge</span>
-              <a href="https://wa.me/94773616237?text=Hello%20Royal%20Curtain%20House%2C%20I%20am%20interested%20in%20Monsoon%20Outdoor%20Blinds." class="btn btn-small" target="_blank" rel="noopener noreferrer">Inquire</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 5: Smart Motorized Automation -->
-        <div class="product-card" data-category="modern">
-          <div class="product-image">
-            <div class="product-img-placeholder modern-img">
-              <svg viewBox="0 0 200 260" fill="none"><rect width="200" height="260" fill="#E4DCD3"/><rect x="25" y="20" width="150" height="14" rx="4" fill="#2A241F"/><rect x="145" y="34" width="30" height="60" rx="4" fill="#C8A961"/><circle cx="160" cy="55" r="4" fill="#FFF"/><path d="M40 34 L40 230" stroke="#C8A961" stroke-width="2"/><path d="M130 34 L130 230" stroke="#C8A961" stroke-width="2"/></svg>
-            </div>
-            <span class="product-tag">Smart Home</span>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Automation</span>
-            <h3 class="product-name">Smart Motorized Tracks</h3>
-            <p class="product-desc">Automated motorized tracks with silent DC motors. Control via mobile app, wireless remotes, or voice command with Google Assistant and Alexa.</p>
-            <div class="product-footer">
-              <span class="product-badge-clean">Voice & App Ready</span>
-              <a href="https://wa.me/94773616237?text=Hello%20Royal%20Curtain%20House%2C%20I%20am%20interested%20in%20Smart%20Motorized%20Curtains." class="btn btn-small" target="_blank" rel="noopener noreferrer">Inquire</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 6: Natural Belgian Linen & Cloud Sheer -->
-        <div class="product-card" data-category="sheer">
-          <div class="product-image">
-            <div class="product-img-placeholder sheer-img">
-              <svg viewBox="0 0 200 260" fill="none"><rect width="200" height="260" fill="#FAF6F0"/><path d="M40 20 Q50 130 40 240" stroke="#DECDB5" stroke-width="1.5" fill="none"/><path d="M80 20 Q90 130 80 240" stroke="#DECDB5" stroke-width="1.5" fill="none"/><path d="M120 20 Q130 130 120 240" stroke="#DECDB5" stroke-width="1.5" fill="none"/><path d="M160 20 Q170 130 160 240" stroke="#DECDB5" stroke-width="1.5" fill="none"/><rect x="30" y="15" width="140" height="8" rx="2" fill="#DECDB5"/></svg>
-            </div>
-            <span class="product-tag">Organic Texture</span>
-          </div>
-          <div class="product-info">
-            <span class="product-category">Linen & Sheer</span>
-            <h3 class="product-name">Belgian Linen & Voile</h3>
-            <p class="product-desc">Airy, breathable natural linen and voile sheer fabrics that gently diffuse tropical sunlight into soft ambient illumination.</p>
-            <div class="product-footer">
-              <span class="product-badge-clean">Diffused Daylight</span>
-              <a href="https://wa.me/94773616237?text=Hello%20Royal%20Curtain%20House%2C%20I%20am%20interested%20in%20Natural%20Linen%20and%20Sheers." class="btn btn-small" target="_blank" rel="noopener noreferrer">Inquire</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Quick Sizing Engine Banner -->
-      <div class="quick-calc-banner">
-        <div>
-          <span class="quick-calc-tag">Precision Specifications</span>
-          <h3>Need Exact Fabric Yardage & Sizing for Your Windows?</h3>
-          <p>Use our interactive Sizing Engine to compute required fabric meterage, panel counts, and heading fullness.</p>
-        </div>
-        <a href="index.html#calculator" class="btn btn-primary btn-lg">Launch Sizing Engine</a>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Value Section -->
-  <section class="section services">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Direct Importer Advantage</span>
-        <h2 class="section-title">Why Royal Curtain House</h2>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">✦</div>
-          <h3>Free Home Measurement</h3>
-          <p>Technicians visit your space across Kandy, Matale, and Kekirawa with fabric swatches at zero charge.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">✦</div>
-          <h3>Direct Factory Imports</h3>
-          <p>Direct sourcing of fabrics, ripple runners, and motorized tracks eliminates unnecessary retail markups.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">✦</div>
-          <h3>5-Year Guarantee</h3>
-          <p>All track mechanisms, motors, and bespoke stitching are covered by our 5-year workmanship guarantee.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
+  <!-- Minimalist Liquid Glass Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo">
-            <img src="images/logo-emblem.svg" alt="Royal Curtain House Emblem" class="logo-emblem-img" width="38" height="34">
-            <span class="logo-text">
-              Royal Curtain House
-              <span class="logo-subtext">(Pvt) Ltd</span>
-            </span>
-          </div>
-          <p>Sri Lanka's trusted architectural drapery and blind specialist since 1998. Showrooms in Kekirawa, Katugastota, and Matale.</p>
+        <div>
+          <div class="footer-brand-title">Royal Curtain House</div>
+          <p class="footer-text">Sri Lanka's architectural window treatment artisans since 1998. Showroom on Trincomalee Street, Matale with dedicated island-wide consultation, laser measurement, and installation services.</p>
+          <span class="footer-tag">Handcrafted in Matale • Serving Island-Wide</span>
         </div>
-        <div class="footer-col">
-          <h4>Collections</h4>
-          <ul>
-            <li><a href="collections.html">Ripple Fold (Wave) Curtains</a></li>
-            <li><a href="collections.html">Zebra Day & Night Blinds</a></li>
-            <li><a href="collections.html">Nightfall Blackout Drapes</a></li>
-            <li><a href="collections.html">Outdoor Monsoon Blinds</a></li>
-            <li><a href="collections.html">Belgian Linen & Sheers</a></li>
+
+        <div>
+          <div class="footer-heading">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact & Showroom</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>Showrooms</h4>
-          <ul>
-            <li><a href="index.html#showrooms">Kekirawa (077 361 6237)</a></li>
-            <li><a href="index.html#showrooms">Katugastota / Kandy (077 646 6680)</a></li>
-            <li><a href="index.html#showrooms">Matale (077 227 3838)</a></li>
-            <li><a href="index.html#calculator">Sizing Engine</a></li>
+
+        <div>
+          <div class="footer-heading">Treatments</div>
+          <ul class="footer-links">
+            <li><a href="collections.html#wave">Ripple Fold Wave</a></li>
+            <li><a href="collections.html#modern">Zebra Blinds</a></li>
+            <li><a href="collections.html#blackout">Thermal Blackout</a></li>
+            <li><a href="services.html#motorization">Smart Motorization</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">Our 25-Year Heritage</a></li>
-            <li><a href="index.html#testimonials">Client Reviews</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="services.html">5-Year Guarantee</a></li>
-          </ul>
+
+        <div>
+          <div class="footer-heading">Matale Showroom</div>
+          <p class="footer-text footer-address">No 553, Trincomalee Street,<br>Matale 21000, Sri Lanka</p>
+          <p class="footer-text">
+            <strong>Hotline:</strong> <a href="tel:+94772273838" class="footer-phone-link">+94 77 227 3838</a><br>
+            <strong>Service:</strong> Island-Wide Measurement
+          </p>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <p>&copy; 2026 Royal Curtain House (Pvt) Ltd. All rights reserved. Registered in Sri Lanka.</p>
-        <p>Showrooms in Kekirawa, Katugastota & Matale.</p>
+        <span>&copy; 1998–2026 Royal Curtain House (Pvt) Ltd • Matale Branch. All rights reserved.</span>
+        <span>Architectural Drapery & Smart Window Systems</span>
       </div>
     </div>
   </footer>
 
+  <!-- Self-Hosted Local Scripts (100% Offline, Zero CDNs) -->
+  <script src="js/vendor/three.min.js"></script>
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
   <script src="js/common.js"></script>
+  <script src="js/liquid-shader.js"></script>
+  <script src="js/motion.js"></script>
   <script src="js/collections.js"></script>
 </body>
 </html>

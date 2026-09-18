@@ -1,9 +1,9 @@
 /**
- * Royal Curtain House — Homepage Specific JavaScript (home.js)
+ * Royal Curtain House (Matale Branch) — Homepage Specific JavaScript (home.js)
  * Dedicated functionality for index.html:
  * - Minimalist wave drapery loading screen with failsafe dismissal
  * - Signature collection filter tabs
- * - Architectural Curtain Sizing & Specification Engine
+ * - Architectural Curtain Sizing & Specification Engine (Matale & Island-Wide)
  */
 
 (function () {
@@ -13,7 +13,7 @@
     const body = document.body;
     const loadingScreen = document.getElementById('loadingScreen');
     const currentHash = window.location.hash;
-    const sessionKey = 'royal-curtain-house-loaded';
+    const sessionKey = 'royal-matale-loaded';
     const hasLoadedThisSession = sessionStorage.getItem(sessionKey) === 'true';
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -36,7 +36,7 @@
           loadingScreen.style.display = 'none';
           if (body) body.classList.remove('has-curtain-reveal');
         }, 450);
-      }, 850);
+      }, 700);
     };
 
     if (loadingScreen) {
@@ -50,15 +50,14 @@
         body.classList.add('has-curtain-reveal');
         window.setTimeout(() => {
           dismissLoadingScreen(false);
-        }, 450);
+        }, 400);
       } else {
         dismissLoadingScreen(true);
       }
 
-      // Failsafe: Ensures loading screen is dismissed within 1500ms under all conditions
       window.setTimeout(() => {
         dismissLoadingScreen(true);
-      }, 1500);
+      }, 1200);
     }
 
     // -----------------------------------------------------------------------
@@ -91,7 +90,6 @@
     // -----------------------------------------------------------------------
     const calcForm = document.getElementById('curtainCalculatorForm');
     if (calcForm) {
-      // Cleanly prevent form submit without needing inline onsubmit="return false;"
       calcForm.addEventListener('submit', (e) => e.preventDefault());
 
       const widthInput = document.getElementById('calcWidth');
@@ -101,7 +99,7 @@
       const fabricSelect = document.getElementById('calcFabric');
       const dropSelect = document.getElementById('calcDrop');
       const motorCheckbox = document.getElementById('calcMotorized');
-      const branchSelect = document.getElementById('calcBranch');
+      const cityInput = document.getElementById('calcCity');
 
       const resultFabricMetres = document.getElementById('calcResultFabric');
       const resultPanels = document.getElementById('calcResultPanels');
@@ -115,7 +113,7 @@
       let prevPanels = 2;
       let prevTrackSpan = 68;
 
-      const animateNumber = (element, start, end, suffix = '', decimals = 1, duration = 280) => {
+      const animateNumber = (element, start, end, suffix = '', decimals = 1, duration = 250) => {
         if (!element) return;
         if (prefersReducedMotion) {
           element.textContent = (decimals > 0 ? end.toFixed(decimals) : Math.round(end)) + suffix;
@@ -165,7 +163,7 @@
         const fabricKey = fabricSelect?.value || 'linen';
         const dropKey = dropSelect?.value || 'kiss';
         const isMotorized = motorCheckbox?.checked || false;
-        const selectedBranch = branchSelect?.value || 'general';
+        const clientCity = (cityInput?.value || '').trim() || 'Sri Lanka';
 
         const totalRodWidth = windowWidth + (rodExtension * 2);
         const headingConfig = FULLNESS_FACTORS[headingKey] || FULLNESS_FACTORS.wave;
@@ -207,30 +205,30 @@
         }
 
         if (whatsappBtn && window.RoyalApp && RoyalApp.buildWhatsAppUrl) {
-          const branchName = RoyalApp.BRANCHES[selectedBranch]?.name || RoyalApp.BRANCHES.general.name;
           const specSummary = [
             `*Custom Window Sizing & Specification Request:*`,
+            `• Client Location: ${clientCity} (Island-Wide Service)`,
             `• Window Dimensions: ${windowWidth}" W × ${windowHeight}" H`,
-            `• Recommended Track Span: ${totalRodWidth}" (${rodExtension}" stack-back clearance/side)`,
+            `• Recommended Track Span: ${totalRodWidth}" (${rodExtension}" stack clearance/side)`,
             `• Heading Style: ${headingConfig.name} (${headingConfig.factor}x fullness)`,
             `• Drop Style: ${dropConfig.label}`,
             `• Fabric Selection: ${fabricConfig.name}`,
             `• System: ${isMotorized ? 'Smart Motorized Automation (App & Remote)' : 'Concealed Silent-Glide Track'}`,
             `• Calculated Fabric: ~${linearMetres} Linear Metres (${panelCount} Handcrafted Panels)`,
-            `• Preferred Showroom: ${branchName}`,
+            `• Matale Showroom Reference: No 553, Trincomalee Street, Matale`,
             `Please provide fabric swatches, custom quotation, and free on-site measurement schedule.`
           ].join('\n');
 
           whatsappBtn.href = RoyalApp.buildWhatsAppUrl({
             name: 'Customer',
-            branch: branchName,
+            city: clientCity,
             service: 'Custom Window Sizing',
             message: specSummary
-          }, selectedBranch);
+          });
         }
       };
 
-      [widthInput, heightInput, extInput, headingSelect, fabricSelect, dropSelect, motorCheckbox, branchSelect].forEach((el) => {
+      [widthInput, heightInput, extInput, headingSelect, fabricSelect, dropSelect, motorCheckbox, cityInput].forEach((el) => {
         if (el) {
           el.addEventListener('input', updateCalculations);
           el.addEventListener('change', updateCalculations);
@@ -241,4 +239,3 @@
     }
   });
 })();
-

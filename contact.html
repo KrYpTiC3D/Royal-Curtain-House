@@ -3,45 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact & Showrooms | Royal Curtain House Sri Lanka</title>
-  <meta name="description" content="Contact Royal Curtain House. Visit our showrooms in Katugastota (Kandy), Kekirawa (A9 Road), and Matale, or book a free on-site home measurement across Central Sri Lanka.">
+  <title>Contact & Showroom — Royal Curtain House (Matale)</title>
+  <meta name="description" content="Visit the Royal Curtain House showroom on Trincomalee Street, Matale or schedule an on-site laser measurement visit anywhere in Sri Lanka. Connect directly on WhatsApp.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/svg+xml" href="images/logo-emblem.svg">
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
-
 </head>
 <body>
+
+  <!-- Three.js Ambient Liquid Fabric Wave Canvas -->
+  <canvas id="liquidCanvas"></canvas>
+
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
     <div class="container nav-inner">
-      <a href="index.html" class="logo" aria-label="Royal Curtain House (Pvt) Ltd">
+      <a href="index.html" class="logo" aria-label="Royal Curtain House Matale">
         <img src="images/logo-emblem.svg" alt="Royal Curtain House Emblem" class="logo-emblem-img" width="38" height="34">
         <span class="logo-text">
-          Royal Curtain House
-          <span class="logo-subtext">(Pvt) Ltd</span>
+          <span class="logo-main">Royal Curtain House</span>
+          <span class="logo-branch">Matale • Island-Wide Service</span>
         </span>
       </a>
+
       <div class="nav-actions">
         <ul class="nav-links" id="navLinks">
           <li><a href="index.html">Home</a></li>
           <li><a href="collections.html">Collections</a></li>
-          <li><a href="index.html#calculator">Sizing Engine</a></li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="index.html#showrooms">Showrooms</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="https://wa.me/94773616237?text=Hello%20Royal%20Curtain%20House%2C%20I%20would%20like%20to%20request%20a%20free%20consultation." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Free Consultation</a></li>
+          <li><a href="contact.html" class="active">Contact & Showroom</a></li>
+          <li>
+            <a href="https://wa.me/94772273838?text=Hello%20Royal%20Curtain%20House%20(Matale)%2C%20I%20would%20like%20to%20connect%20with%20your%20team." class="btn btn-primary nav-consult-btn" data-magnetic target="_blank" rel="noopener noreferrer">Free Consultation</a>
+          </li>
+          <li class="drawer-theme-item">
+            <div class="drawer-theme-box">
+              <span class="drawer-theme-label">Appearance</span>
+              <button class="theme-toggle" id="drawerThemeToggle" aria-label="Switch to dark theme" title="Toggle theme">
+                <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                </svg>
+              </button>
+            </div>
+          </li>
         </ul>
-        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme" title="Toggle theme">
-          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme" title="Toggle theme">
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="4"></circle>
             <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
           </svg>
-          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
         </button>
+
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
         </button>
@@ -49,186 +68,213 @@
     </div>
   </nav>
 
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="container page-hero-inner">
-      <span class="section-badge">Direct Communication</span>
-      <h1>Contact Our Regional Showrooms</h1>
-      <p>Connect with our showroom teams in Kekirawa, Katugastota, and Matale for quick WhatsApp estimates, fabric advice, and free home measurement booking.</p>
+  <!-- Page Header -->
+  <header class="page-header" data-reveal="fade-up">
+    <div class="container page-header-inner">
+      <span class="section-eyebrow">Matale Showroom & Island-Wide Bookings</span>
+      <h1 class="section-title">Get in Touch</h1>
+      <p class="section-subtitle">
+        Visit our flagship showroom on Trincomalee Street in Matale, or book an on-site window measurement consultation anywhere in Sri Lanka.
+      </p>
     </div>
-  </section>
+  </header>
 
-  <!-- Contact Form & Showroom Details Section -->
-  <section class="section contact" id="contact">
+  <!-- Main Content: Contact & Showroom (Left/Right Reveals) -->
+  <main class="section">
     <div class="container">
-      <div class="contact-wrapper">
-        <form class="contact-form" id="contactForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="firstName">First Name *</label>
-              <input type="text" id="firstName" name="firstName" required placeholder="Your first name">
-            </div>
-            <div class="form-group">
-              <label for="lastName">Last Name *</label>
-              <input type="text" id="lastName" name="lastName" required placeholder="Your last name">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email *</label>
-              <input type="email" id="email" name="email" required placeholder="your@email.com">
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone / WhatsApp *</label>
-              <input type="tel" id="phone" name="phone" required placeholder="07X XXX XXXX">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="branch">Select Preferred Showroom *</label>
-              <select id="branch" name="branch" required>
-                <option value="katugastota">Katugastota Showroom (Kandy District)</option>
-                <option value="kekirawa">Kekirawa Showroom (A9 Highway Hub)</option>
-                <option value="matale">Matale Showroom (Trincomalee St)</option>
-                <option value="general">Central Inquiries / Island-Wide</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="service">Service Interested In</label>
-              <select id="service" name="service">
-                <option value="Wave Curtains">Ripple Fold (Wave) Curtains</option>
-                <option value="Zebra Blinds">Modern Zebra Blinds</option>
-                <option value="Blackout Curtains">100% Thermal Blackout Curtains</option>
-                <option value="Monsoon Blinds">Outdoor Monsoon Weather Blinds</option>
-                <option value="Smart Motorization">Smart Motorized Tracks</option>
-                <option value="Free Home Measurement">Free On-Site Measurement</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="message">Project Details</label>
-            <textarea id="message" name="message" rows="4" placeholder="Tell us about your room types, number of windows, preferred colors, or request a visit date..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg btn-full">Connect on WhatsApp</button>
-          <p class="form-note">Your inquiry will route directly to the designated branch manager with instant WhatsApp notification.</p>
-        </form>
+      <div class="contact-grid">
 
-        <div class="contact-info">
-          <!-- Kekirawa Branch Card -->
-          <div class="contact-card">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#C8A961" stroke-width="1.5"/><circle cx="12" cy="9" r="2.5" stroke="#C8A961" stroke-width="1.5"/></svg>
-            </div>
-            <div>
-              <h4>Kekirawa Showroom (North Central)</h4>
-              <p>
-                Cooperative Building, A9 Road / Kandy - Jaffna Highway, Kekirawa.<br>
-                <strong>Hotline:</strong> 077 361 6237<br>
-                <a href="https://wa.me/94773616237?text=Hello%20Kekirawa%20Showroom%2C%20I%20would%20like%20to%20inquire." target="_blank" rel="noopener noreferrer" class="contact-link">Open Kekirawa WhatsApp</a>
-              </p>
-            </div>
-          </div>
+        <!-- Column 1: Showroom Info & Map (Slide Left) -->
+        <div data-reveal="slide-left">
+          <div class="contact-card mb-lg">
+            <span class="section-eyebrow">Flagship Showroom</span>
+            <h2 class="fs-card-title mb-md">Royal Curtain House — Matale</h2>
+            
+            <div class="showroom-details-list mb-lg">
+              <div class="showroom-detail-row">
+                <div class="showroom-icon-circle" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Showroom Location:</strong><br>
+                  No 553, Trincomalee Street, Matale 21000, Central Province, Sri Lanka
+                </div>
+              </div>
 
-          <!-- Katugastota Branch Card -->
-          <div class="contact-card">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#C8A961" stroke-width="1.5"/><circle cx="12" cy="9" r="2.5" stroke="#C8A961" stroke-width="1.5"/></svg>
+              <div class="showroom-detail-row">
+                <div class="showroom-icon-circle" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Direct Call & WhatsApp:</strong><br>
+                  <a href="https://wa.me/94772273838" class="text-green" target="_blank" rel="noopener noreferrer">+94 77 227 3838</a>
+                </div>
+              </div>
+
+              <div class="showroom-detail-row">
+                <div class="showroom-icon-circle" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Showroom Opening Hours:</strong><br>
+                  Monday – Saturday: 9:00 AM – 7:00 PM<br>
+                  Sunday: By Appointment
+                </div>
+              </div>
+
+              <div class="showroom-detail-row">
+                <div class="showroom-icon-circle" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                    <line x1="8" y1="2" x2="8" y2="18"></line>
+                    <line x1="16" y1="6" x2="16" y2="22"></line>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Island-Wide Measurement Service:</strong><br>
+                  Consultants available for on-site visits across all 9 provinces of Sri Lanka.
+                </div>
+              </div>
             </div>
-            <div>
-              <h4>Katugastota Showroom (Kandy District)</h4>
-              <p>
-                No 196/A Madawala Road, Katugastota, Kandy.<br>
-                <strong>Hotlines:</strong> 077 646 6680 / 077 227 3838<br>
-                <a href="https://wa.me/94776466680?text=Hello%20Katugastota%20Showroom%2C%20I%20would%20like%20to%20inquire." target="_blank" rel="noopener noreferrer" class="contact-link">Open Katugastota WhatsApp</a>
-              </p>
-            </div>
+
+            <a href="https://wa.me/94772273838?text=Hello%20Royal%20Curtain%20House%20(Matale)%2C%20I%20would%20like%20to%20connect%20with%20your%20showroom%20team." class="btn btn-primary btn-full" data-magnetic target="_blank" rel="noopener noreferrer">
+              Chat on WhatsApp Directly
+            </a>
           </div>
 
-          <!-- Matale Branch Card -->
-          <div class="contact-card">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#C8A961" stroke-width="1.5"/><circle cx="12" cy="9" r="2.5" stroke="#C8A961" stroke-width="1.5"/></svg>
-            </div>
-            <div>
-              <h4>Matale Showroom (Central Province)</h4>
-              <p>
-                No 553, Trincomalee Street, Matale 21000.<br>
-                <strong>Hotlines:</strong> 077 227 3838 / 077 361 6237<br>
-                <a href="https://wa.me/94772273838?text=Hello%20Matale%20Showroom%2C%20I%20would%20like%20to%20inquire." target="_blank" rel="noopener noreferrer" class="contact-link">Open Matale WhatsApp</a>
-              </p>
-            </div>
-          </div>
-
-          <!-- Free On-Site Measurement Scheduling Card -->
-          <div class="contact-card">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#C8A961" stroke-width="1.5"/><line x1="16" y1="2" x2="16" y2="6" stroke="#C8A961" stroke-width="1.5"/><line x1="8" y1="2" x2="8" y2="6" stroke="#C8A961" stroke-width="1.5"/><line x1="3" y1="10" x2="21" y2="10" stroke="#C8A961" stroke-width="1.5"/></svg>
-            </div>
-            <div>
-              <h4>Free On-Site Laser Measurement</h4>
-              <p>
-                • Mobile measurement teams covering Kandy, Matale, and North Central provinces.<br>
-                • Technicians bring physical fabric swatch books and ripple runners to your space.<br>
-                • Millimeter-exact sizing for seamless ceiling-recessed wave tracking and drop precision.
-              </p>
-            </div>
+          <!-- Embedded Map Card -->
+          <div class="contact-map-card">
+            <iframe 
+              src="https://maps.google.com/maps?q=Royal+Curtain+House,+Trincomalee+Street,+Matale,+Sri+Lanka&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              title="Royal Curtain House Matale Map"
+              width="100%" 
+              height="100%" 
+              loading="lazy" 
+              allowfullscreen>
+            </iframe>
           </div>
         </div>
+
+        <!-- Column 2: Minimalist Booking Form (Slide Right) -->
+        <div class="contact-card" data-reveal="slide-right">
+          <span class="section-eyebrow">Schedule A Visit</span>
+          <h2 class="fs-card-title mb-sm">Book an On-Site Consultation</h2>
+          <p class="fs-body-sm text-soft mb-lg">
+            Submit your details below. Our Matale team will connect on WhatsApp with available dates and bring physical swatches to your location.
+          </p>
+
+          <form id="contactForm">
+            <div class="form-group">
+              <label class="form-label" for="contactName">Your Full Name *</label>
+              <input type="text" id="contactName" name="name" class="form-input" placeholder="e.g. Priyantha Silva" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contactPhone">Phone / WhatsApp Number *</label>
+              <input type="tel" id="contactPhone" name="phone" class="form-input" placeholder="e.g. +94 77 123 4567" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contactCity">Your City / Location in Sri Lanka</label>
+              <input type="text" id="contactCity" name="city" class="form-input" placeholder="e.g. Matale, Kandy, Colombo, Galle, Kurunegala">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contactService">Window Treatment Interest</label>
+              <select id="contactService" name="service" class="form-input">
+                <option value="Ripple Fold Wave Curtains" selected>Ripple Fold Wave Curtains</option>
+                <option value="Day & Night Zebra Blinds">Day & Night Zebra Blinds</option>
+                <option value="100% Thermal Blackout Drapes">100% Thermal Blackout Drapes</option>
+                <option value="Smart Motorized Track Systems">Smart Motorized Track Systems</option>
+                <option value="Full Residence / Commercial Fit-Out">Full Residence / Commercial Fit-Out</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contactMessage">Project Notes / Number of Windows</label>
+              <textarea id="contactMessage" name="message" class="form-textarea" placeholder="Describe your window layout, ceiling heights, or preferred fabric tones..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full" data-magnetic>
+              Submit & Connect on WhatsApp
+            </button>
+
+            <p class="form-note">
+              No prepayment required. On-site laser measurement and fabric swatch reviews are provided free of charge.
+            </p>
+          </form>
+        </div>
+
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Footer -->
+  <!-- Minimalist Liquid Glass Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo">
-            <img src="images/logo-emblem.svg" alt="Royal Curtain House Emblem" class="logo-emblem-img" width="38" height="34">
-            <span class="logo-text">
-              Royal Curtain House
-              <span class="logo-subtext">(Pvt) Ltd</span>
-            </span>
-          </div>
-          <p>Sri Lanka's trusted architectural drapery and blind specialist since 1998. Showrooms in Kekirawa, Katugastota, and Matale.</p>
+        <div>
+          <div class="footer-brand-title">Royal Curtain House</div>
+          <p class="footer-text">Sri Lanka's architectural window treatment artisans. Showroom on Trincomalee Street, Matale with dedicated island-wide consultation and installation services.</p>
+          <span class="footer-tag">Handcrafted in Matale • Serving Island-Wide</span>
         </div>
-        <div class="footer-col">
-          <h4>Collections</h4>
-          <ul>
-            <li><a href="collections.html">Ripple Fold Wave Curtains</a></li>
-            <li><a href="collections.html">Zebra Day & Night Blinds</a></li>
-            <li><a href="collections.html">Nightfall Blackout Drapes</a></li>
-            <li><a href="collections.html">Outdoor Monsoon Blinds</a></li>
-            <li><a href="collections.html">Belgian Linen & Sheers</a></li>
+
+        <div>
+          <div class="footer-heading">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact & Showroom</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>Showrooms</h4>
-          <ul>
-            <li><a href="index.html#showrooms">Kekirawa (077 361 6237)</a></li>
-            <li><a href="index.html#showrooms">Katugastota / Kandy (077 646 6680)</a></li>
-            <li><a href="index.html#showrooms">Matale (077 227 3838)</a></li>
-            <li><a href="index.html#calculator">Sizing Engine</a></li>
+
+        <div>
+          <div class="footer-heading">Showroom Details</div>
+          <ul class="footer-links">
+            <li>No 553, Trincomalee Street</li>
+            <li>Matale 21000, Sri Lanka</li>
+            <li>Mon – Sat: 9am – 7pm</li>
+            <li>Sunday: By Appointment</li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">Our 25-Year Heritage</a></li>
-            <li><a href="index.html#testimonials">Client Reviews</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="services.html">5-Year Guarantee</a></li>
-          </ul>
+
+        <div>
+          <div class="footer-heading">Direct Contact</div>
+          <p class="footer-text footer-address">
+            <strong>Phone & WhatsApp:</strong><br>
+            <a href="tel:+94772273838" class="footer-phone-link">+94 77 227 3838</a>
+          </p>
+          <p class="footer-text">
+            <strong>Service Reach:</strong><br>
+            Island-Wide Across Sri Lanka
+          </p>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <p>&copy; 2026 Royal Curtain House (Pvt) Ltd. All rights reserved. Registered in Sri Lanka.</p>
-        <p>Showrooms in Kekirawa, Katugastota & Matale.</p>
+        <span>&copy; 1998–2026 Royal Curtain House (Pvt) Ltd • Matale Branch. All rights reserved.</span>
+        <span>Architectural Drapery & Smart Window Systems</span>
       </div>
     </div>
   </footer>
 
+  <!-- Self-Hosted Local Scripts (100% Offline, Zero CDNs) -->
+  <script src="js/vendor/three.min.js"></script>
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
   <script src="js/common.js"></script>
+  <script src="js/liquid-shader.js"></script>
+  <script src="js/motion.js"></script>
   <script src="js/contact.js"></script>
 </body>
 </html>
