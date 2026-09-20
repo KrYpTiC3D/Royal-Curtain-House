@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Installation Gallery | Royal Curtain House (Matale & Island-Wide)</title>
+  <meta name="description" content="Explore bespoke curtain and blind installations by Royal Curtain House across Matale, Kandy, Colombo, and luxury villas island-wide.">
+  <meta name="theme-color" content="#fafaf8">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Installation Gallery | Royal Curtain House">
+  <meta property="og:description" content="Architectural curtain and blind installations handcrafted in our Matale workshop with island-wide delivery.">
+  <meta property="og:type" content="website">
+
+  <!-- Pre-Boot Synchronous Theme & Session Evaluator (Prevents Flashbangs) -->
+  <script src="js/theme-init.js"></script>
+
+  <!-- Typography: Playfair Display & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/lenis.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Structured Data (LocalBusiness) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeGoodsStore",
+    "name": "Royal Curtain House (Matale Branch)",
+    "description": "Architectural window treatment installations across Sri Lanka.",
+    "telephone": "+94772273838",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "No. 320, Main Street",
+      "addressLocality": "Matale",
+      "addressCountry": "LK"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Anti-Flashbang Smooth Page Transition Veil -->
+  <div class="page-transition-curtain" id="pageTransitionCurtain" aria-hidden="true"></div>
+
+  <!-- Signature Bi-Parting Drapery Session Intro Transition (First Visit of Session) -->
+  <div class="session-intro-overlay" id="sessionIntroOverlay" aria-hidden="true">
+    <div class="intro-curtain-panel intro-curtain-left"></div>
+    <div class="intro-curtain-panel intro-curtain-right"></div>
+    <div class="intro-brand-center" id="introBrandCenter">
+      <img src="images/logo-emblem.svg" alt="Royal Curtain House Emblem" class="intro-logo-emblem" width="56" height="50">
+      <div class="intro-brand-name">Royal Curtain House</div>
+      <div class="intro-brand-meta">Matale Branch &bull; Island-Wide Service</div>
+      <div class="intro-brand-line"></div>
+      <span class="intro-skip-hint">Click or press Esc to skip</span>
+    </div>
+  </div>
+
+  <!-- Ambient Animated Halo Lighting Layer (Light & Dark Modes) -->
+  <div class="ambient-halo-container" aria-hidden="true">
+    <div class="halo-orb halo-emerald"></div>
+    <div class="halo-orb halo-amber"></div>
+    <div class="halo-orb halo-crimson"></div>
+    <div class="halo-orb halo-sunlight"></div>
+  </div>
+
+  <!-- Canvas for Three.js Ambient Liquid Wave Effect -->
+  <canvas id="liquidCanvas" aria-hidden="true"></canvas>
+
+  <!-- Sticky Liquid Glass Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo" aria-label="Royal Curtain House Matale">
+        <img src="images/logo-emblem.svg" alt="Royal Curtain House Emblem" class="logo-emblem-img" width="38" height="34">
+        <span class="logo-text">
+          <span class="logo-main">Royal Curtain House</span>
+          <span class="logo-branch">Matale • Island-Wide Service</span>
+        </span>
+      </a>
+
+      <div class="nav-actions">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="gallery.html" class="active">Gallery</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact & Showroom</a></li>
+          <li>
+            <a href="https://wa.me/94772273838?text=Hello%20Royal%20Curtain%20House%20(Matale)%2C%20I%20would%20like%20to%20inquire%20about%20your%20curtain%20gallery%20installations." class="btn btn-primary nav-consult-btn" data-magnetic target="_blank" rel="noopener noreferrer">Free Consultation</a>
+          </li>
+          <li class="drawer-theme-item">
+            <div class="drawer-theme-box">
+              <span class="drawer-theme-label">Appearance</span>
+              <button class="theme-toggle" id="drawerThemeToggle" aria-label="Switch to dark theme" title="Toggle theme">
+                <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                </svg>
+              </button>
+            </div>
+          </li>
+        </ul>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme" title="Toggle theme">
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+        </button>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header" data-reveal="fade-up">
+    <div class="container page-header-inner">
+      <span class="section-eyebrow">Island-Wide Completed Projects</span>
+      <h1 class="section-title">Architectural Installation Gallery</h1>
+      <p class="section-subtitle">
+        A curated portfolio of luxury residential villas, boutique hospitality retreats, and motorized drapery systems handcrafted by the Royal Curtain House Matale workshop.
+      </p>
+    </div>
+  </header>
+
+  <!-- Gallery Main Section -->
+  <main class="section gallery-section">
+    <div class="container">
+      <!-- Interactive Filter Bar -->
+      <div class="gallery-filters" role="tablist" aria-label="Filter gallery projects" data-reveal="fade-up">
+        <button class="filter-tab active" data-gallery-filter="all" role="tab" aria-selected="true">All Installations</button>
+        <button class="filter-tab" data-gallery-filter="residential" role="tab" aria-selected="false">Luxury Residential</button>
+        <button class="filter-tab" data-gallery-filter="hospitality" role="tab" aria-selected="false">Hospitality & Resorts</button>
+        <button class="filter-tab" data-gallery-filter="motorized" role="tab" aria-selected="false">Motorized Systems</button>
+        <button class="filter-tab" data-gallery-filter="sheer" role="tab" aria-selected="false">Sheers & Voiles</button>
+      </div>
+
+      <!-- Gallery Grid Showcase -->
+      <div class="gallery-grid" data-reveal-group>
+        
+        <!-- Project 1 -->
+        <article class="gallery-card" data-gallery-category="residential" data-reveal-item data-reveal="slide-left"
+          data-project-title="The Grand Pavilion Sanctuary"
+          data-project-tag="Motorized Wave Fold"
+          data-project-desc="Full-height 5.2-meter double-volume motorized wave fold curtains in textured emerald velvet with whisper-quiet smart motor tracks."
+          data-project-img="images/hero-bg.jpg"
+          data-project-fabric="Direct-Imported Belgian Velvet & Sheer Voile"
+          data-project-track="Forest Shuttle Motorized System (Custom Curve)"
+          data-project-location="Matale Heritage Villa"
+          tabindex="0" role="button" aria-label="View The Grand Pavilion Sanctuary details">
+          <div class="gallery-image-wrap">
+            <span class="gallery-badge">Motorized Wave</span>
+            <img src="images/hero-bg.jpg" alt="The Grand Pavilion Sanctuary Curtain Installation" loading="lazy">
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-project-type">Luxury Residential &bull; Matale</span>
+            <h2 class="gallery-title">The Grand Pavilion Sanctuary</h2>
+            <p class="gallery-desc">Double-volume 5.2m motorized wave drapery engineered for monumental living room glazing.</p>
+            <div class="gallery-meta-row">
+              <span>Belgian Velvet &bull; Smart Track</span>
+              <span class="gallery-cta-hint">Inspect &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="gallery-card" data-gallery-category="hospitality" data-reveal-item data-reveal="slide-right"
+          data-project-title="Hunas Falls Forest Lodge"
+          data-project-tag="Dual-Layer Ripple Fold"
+          data-project-desc="Ceiling-recessed ripple fold dual tracks featuring 100% thermal blackout drapery paired with airy light-filtering sheer linen."
+          data-project-img="images/hero-bg.jpg"
+          data-project-fabric="100% Thermal Acoustic Blackout (420 GSM)"
+          data-project-track="Ceiling-Recessed Somfy Glydea Ultra"
+          data-project-location="Hunnasgiriya Boutique Suite"
+          tabindex="0" role="button" aria-label="View Hunas Falls Forest Lodge details">
+          <div class="gallery-image-wrap">
+            <span class="gallery-badge">Hospitality Suite</span>
+            <img src="images/hero-bg.jpg" alt="Hunas Falls Forest Lodge Curtain Installation" loading="lazy">
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-project-type">Hospitality &bull; Matale Foothills</span>
+            <h2 class="gallery-title">Hunas Falls Forest Lodge</h2>
+            <p class="gallery-desc">Ceiling-recessed dual wave track integrating thermal blackout and sheer mist voiles.</p>
+            <div class="gallery-meta-row">
+              <span>Acoustic Blackout &bull; Sheer</span>
+              <span class="gallery-cta-hint">Inspect &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="gallery-card" data-gallery-category="sheer" data-reveal-item data-reveal="slide-left"
+          data-project-title="Hillwood Panoramic Residence"
+          data-project-tag="Floor-to-Ceiling Sheers"
+          data-project-desc="180-degree panoramic glass curved bay windows outfitted with continuous seamless sheer voiles in warm ivory."
+          data-project-img="images/hero-bg.jpg"
+          data-project-fabric="Ultra-Fine Turkish Voile"
+          data-project-track="Hand-Bent Architectural Track System"
+          data-project-location="Kandy Hills Penthouse"
+          tabindex="0" role="button" aria-label="View Hillwood Panoramic Residence details">
+          <div class="gallery-image-wrap">
+            <span class="gallery-badge">Continuous Sheer</span>
+            <img src="images/hero-bg.jpg" alt="Hillwood Panoramic Residence Curtain Installation" loading="lazy">
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-project-type">Residential &bull; Kandy</span>
+            <h2 class="gallery-title">Hillwood Panoramic Residence</h2>
+            <p class="gallery-desc">Seamless 180-degree curved sheer drapery diffusing tropical sunlight while preserving mountain vistas.</p>
+            <div class="gallery-meta-row">
+              <span>Turkish Voile &bull; Curved Track</span>
+              <span class="gallery-cta-hint">Inspect &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="gallery-card" data-gallery-category="motorized" data-reveal-item data-reveal="slide-right"
+          data-project-title="Cinnamon Gardens Smart Penthouse"
+          data-project-tag="Home Automation"
+          data-project-desc="Home-automation integrated motorized drapery responsive to sun sensors and mobile voice commands for effortless daylight control."
+          data-project-fabric="Belgian Textured Linen-Cotton Blend"
+          data-project-track="Smart Home Automated Motorized Rail"
+          data-project-location="Colombo 07"
+          tabindex="0" role="button" aria-label="View Cinnamon Gardens Smart Penthouse details">
+          <div class="gallery-image-wrap">
+            <span class="gallery-badge">Smart Motorized</span>
+            <img src="images/hero-bg.jpg" alt="Cinnamon Gardens Smart Penthouse Curtain Installation" loading="lazy">
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-project-type">Motorized &bull; Colombo 07</span>
+            <h2 class="gallery-title">Cinnamon Gardens Smart Penthouse</h2>
+            <p class="gallery-desc">Voice-controlled automated ripple fold curtains synced with automated luxury lighting.</p>
+            <div class="gallery-meta-row">
+              <span>Smart Somfy &bull; Belgian Linen</span>
+              <span class="gallery-cta-hint">Inspect &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="gallery-card" data-gallery-category="hospitality" data-reveal-item data-reveal="slide-left"
+          data-project-title="Kandalama Eco-Resort Villa"
+          data-project-tag="Acoustic Blackout & Voile"
+          data-project-desc="High acoustic insulation blackout drapery designed for resort privacy, pairing earthy warm amber tones with neutral linen sheers."
+          data-project-img="images/hero-bg.jpg"
+          data-project-fabric="Multi-Weave Blackout Brocade"
+          data-project-track="Heavy-Duty Architectural Track"
+          data-project-location="Dambulla / Matale Region"
+          tabindex="0" role="button" aria-label="View Kandalama Eco-Resort Villa details">
+          <div class="gallery-image-wrap">
+            <span class="gallery-badge">Resort Blackout</span>
+            <img src="images/hero-bg.jpg" alt="Kandalama Eco-Resort Villa Curtain Installation" loading="lazy">
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-project-type">Hospitality &bull; Dambulla</span>
+            <h2 class="gallery-title">Kandalama Eco-Resort Villa</h2>
+            <p class="gallery-desc">Organic blackout brocade creating restful darkness in lakefront luxury guest pavilions.</p>
+            <div class="gallery-meta-row">
+              <span>100% Blackout &bull; Amber Accent</span>
+              <span class="gallery-cta-hint">Inspect &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6 -->
+        <article class="gallery-card" data-gallery-category="residential" data-reveal-item data-reveal="slide-right"
+          data-project-title="Colonial Highlands Estate"
+          data-project-tag="Heritage Pinch Pleat"
+          data-project-desc="Restored heritage colonial estate fitted with custom tailored pinch pleat curtains and architectural fabric pelmets in deep jewel green."
+          data-project-img="images/hero-bg.jpg"
+          data-project-fabric="Heavyweight Thermal Wool-Blend Brocade"
+          data-project-track="Antique Brass Rod with Low-Friction Rings"
+          data-project-location="Nuwara Eliya Highlands"
+          tabindex="0" role="button" aria-label="View Colonial Highlands Estate details">
+          <div class="gallery-image-wrap">
+            <span class="gallery-badge">Heritage Pleat</span>
+            <img src="images/hero-bg.jpg" alt="Colonial Highlands Estate Curtain Installation" loading="lazy">
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-project-type">Residential &bull; Nuwara Eliya</span>
+            <h2 class="gallery-title">Colonial Highlands Estate</h2>
+            <p class="gallery-desc">Traditional triple pinch pleat drapery with thermal lining to insulate highland mountain cold.</p>
+            <div class="gallery-meta-row">
+              <span>Emerald Brocade &bull; Brass Rod</span>
+              <span class="gallery-cta-hint">Inspect &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Call to Action Banner -->
+      <section class="cta-banner" data-reveal="fade-up">
+        <span class="section-eyebrow">Bespoke Design & Fabrication</span>
+        <h2 class="cta-banner-title">Have an Architectural Project in Mind?</h2>
+        <p class="cta-banner-desc">
+          Our Matale master workshop provides free on-site measurements, fabric sample presentations, and precision installation across Matale, Kandy, and island-wide.
+        </p>
+        <div class="cta-banner-actions">
+          <a href="contact.html" class="btn btn-primary" data-magnetic>Schedule Showroom Visit</a>
+          <a href="https://wa.me/94772273838?text=Hello%20Royal%20Curtain%20House%2C%20I%20saw%20your%20Gallery%20and%20would%20like%20to%20request%20a%20site%20measurement%20consultation." class="btn btn-secondary" data-magnetic target="_blank" rel="noopener noreferrer">WhatsApp Direct Inquiry</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Lightbox Modal for Project Details & WhatsApp Booking -->
+  <div class="gallery-modal-overlay" id="galleryModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="galleryModalTitle" data-lenis-prevent>
+    <div class="gallery-modal-card" data-lenis-prevent>
+      <button class="gallery-modal-close" id="galleryModalClose" aria-label="Close project modal">&times;</button>
+      <div class="gallery-modal-media">
+        <img src="images/hero-bg.jpg" alt="Project Detail Image" id="galleryModalImg">
+      </div>
+      <div class="gallery-modal-content">
+        <span class="gallery-modal-tag" id="galleryModalTag">Bespoke Project</span>
+        <h3 class="gallery-modal-title" id="galleryModalTitle">Project Title</h3>
+        <p class="gallery-modal-desc" id="galleryModalDesc">Project Description</p>
+        
+        <div class="gallery-modal-specs">
+          <div class="gallery-spec-item">
+            <span class="gallery-spec-label">Fabric Specification</span>
+            <span class="gallery-spec-value" id="galleryModalFabric">Belgian Velvet</span>
+          </div>
+          <div class="gallery-spec-item">
+            <span class="gallery-spec-label">Track Mechanism</span>
+            <span class="gallery-spec-value" id="galleryModalTrack">Motorized Smart Track</span>
+          </div>
+          <div class="gallery-spec-item">
+            <span class="gallery-spec-label">Project Location</span>
+            <span class="gallery-spec-value" id="galleryModalLocation">Sri Lanka</span>
+          </div>
+          <div class="gallery-spec-item">
+            <span class="gallery-spec-label">Workshop Fabrication</span>
+            <span class="gallery-spec-value">Matale Master Atelier</span>
+          </div>
+        </div>
+
+        <div class="gallery-modal-actions">
+          <a href="#" class="btn btn-primary btn-full" id="galleryModalInquireBtn" target="_blank" rel="noopener noreferrer">Inquire About This Style on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Minimalist Liquid Glass Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-logo" aria-label="Royal Curtain House Matale">
+            <img src="images/logo-emblem.svg" alt="Royal Curtain House Emblem" class="footer-logo-img" width="34" height="30">
+            <span class="footer-brand-title">Royal Curtain House</span>
+          </a>
+          <p class="footer-text">
+            Matale's premier curtain manufacturer and direct fabric importer. Crafting bespoke ripple fold curtains, motorized drapery tracks, and architectural blinds since 1998 with island-wide installation.
+          </p>
+          <span class="footer-tag">Matale Branch &bull; Island-Wide Service</span>
+        </div>
+
+        <div>
+          <div class="footer-heading">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact & Showroom</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-heading">Collections</div>
+          <ul class="footer-links">
+            <li><a href="collections.html#wave">Wave Curtains</a></li>
+            <li><a href="collections.html#blinds">Zebra Blinds</a></li>
+            <li><a href="collections.html#blackout">100% Blackout</a></li>
+            <li><a href="collections.html#sheers">Sheers & Voiles</a></li>
+            <li><a href="collections.html#motorized">Motorized Tracks</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-heading">Matale Showroom</div>
+          <p class="footer-text footer-address">
+            No 553, Trincomalee Street,<br>
+            Matale 21000, Central Province,<br>
+            Sri Lanka.
+          </p>
+          <p class="footer-text">
+            <strong>Hotline:</strong> <a href="tel:+94772273838" class="footer-phone-link">+94 77 227 3838</a>
+          </p>
+          <p class="footer-text">
+            <strong>Hours:</strong> Mon &ndash; Sat: 9:00 AM &ndash; 7:00 PM
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Royal Curtain House. All rights reserved. Matale Branch &bull; Island-Wide Service.</span>
+        <span>Liquid Glass Architectural Motion System</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript Modules -->
+  <script src="js/vendor/three.min.js"></script>
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/liquid-shader.js"></script>
+  <script src="js/motion.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>
+

@@ -139,6 +139,7 @@
     };
 
     RoyalApp.setMobileNavState = setMobileNavState;
+    setMobileNavState(false);
 
     if (navToggle && navLinks) {
       navToggle.addEventListener('click', (e) => {
@@ -221,13 +222,74 @@
           if (target) {
             e.preventDefault();
             setMobileNavState(false);
-            target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+            if (window.lenis && !prefersReducedMotion) {
+              window.lenis.scrollTo(target, { offset: -70 });
+            } else {
+              target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+            }
             if (history.pushState) {
               history.pushState(null, null, hash);
             }
           }
         }
       });
+    });
+
+    // -------------------------------------------------------------------------
+    // 8. Anti-Flashbang Page Transition Controller (Switch & Refresh)
+    // -------------------------------------------------------------------------
+    const curtain = document.getElementById('pageTransitionCurtain');
+
+    const revealPage = () => {
+      if (!curtain) return;
+      requestAnimationFrame(() => {
+        curtain.classList.add('loaded');
+        curtain.classList.remove('exiting');
+      });
+    };
+
+    revealPage();
+    window.addEventListener('pageshow', revealPage);
+
+    // Intercept internal page navigations for smooth cross-page transition
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (!link) return;
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      // Ignore external links, new tabs, anchors, tel, mailto, wa.me, modifier keys
+      if (
+        link.target === '_blank' ||
+        href.startsWith('#') ||
+        href.startsWith('http:') ||
+        href.startsWith('https:') ||
+        href.startsWith('mailto:') ||
+        href.startsWith('tel:') ||
+        link.hasAttribute('download') ||
+        e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.defaultPrevented
+      ) {
+        return;
+      }
+
+      // Check if target is a different HTML page
+      const currentUrl = new URL(window.location.href);
+      const targetUrl = new URL(href, window.location.href);
+      if (currentUrl.origin === targetUrl.origin && currentUrl.pathname === targetUrl.pathname) {
+        return; // same page hash or refresh
+      }
+
+      if (prefersReducedMotion || !curtain) {
+        return; // follow normal navigation
+      }
+
+      e.preventDefault();
+      curtain.classList.remove('loaded');
+      curtain.classList.add('exiting');
+
+      window.setTimeout(() => {
+        window.location.href = href;
+      }, 220);
     });
   });
 })();

@@ -6,13 +6,37 @@
   <title>Architectural Window Collections — Royal Curtain House (Matale)</title>
   <meta name="description" content="Explore custom ripple fold wave curtains, day & night zebra blinds, 100% thermal blackout drapery, and motorized systems. Handcrafted in Matale and installed island-wide in Sri Lanka.">
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/theme-init.js"></script>
   <link rel="icon" type="image/svg+xml" href="images/logo-emblem.svg">
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 <body>
 
+  <!-- Anti-Flashbang Smooth Page Transition Veil -->
+  <div class="page-transition-curtain" id="pageTransitionCurtain" aria-hidden="true"></div>
+
+  <!-- Signature Bi-Parting Drapery Session Intro Transition (First Visit of Session) -->
+  <div class="session-intro-overlay" id="sessionIntroOverlay" aria-hidden="true">
+    <div class="intro-curtain-panel intro-curtain-left"></div>
+    <div class="intro-curtain-panel intro-curtain-right"></div>
+    <div class="intro-brand-center" id="introBrandCenter">
+      <img src="images/logo-emblem.svg" alt="Royal Curtain House Emblem" class="intro-logo-emblem" width="56" height="50">
+      <div class="intro-brand-name">Royal Curtain House</div>
+      <div class="intro-brand-meta">Matale Branch &bull; Island-Wide Service</div>
+      <div class="intro-brand-line"></div>
+      <span class="intro-skip-hint">Click or press Esc to skip</span>
+    </div>
+  </div>
+
   <!-- Three.js Ambient Liquid Fabric Wave Canvas -->
+    <div class="ambient-halo-container" aria-hidden="true">
+    <div class="halo-orb halo-emerald"></div>
+    <div class="halo-orb halo-amber"></div>
+    <div class="halo-orb halo-crimson"></div>
+    <div class="halo-orb halo-sunlight"></div>
+  </div>
+
   <canvas id="liquidCanvas"></canvas>
 
   <!-- Navigation -->
@@ -30,6 +54,7 @@
         <ul class="nav-links" id="navLinks">
           <li><a href="index.html">Home</a></li>
           <li><a href="collections.html" class="active">Collections</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="contact.html">Contact & Showroom</a></li>
           <li>
@@ -259,7 +284,10 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="footer-brand-title">Royal Curtain House</div>
+          <a href="index.html" class="footer-logo" aria-label="Royal Curtain House Matale">
+            <img src="images/logo-emblem.svg" alt="Royal Curtain House Emblem" class="footer-logo-img" width="34" height="30">
+            <span class="footer-brand-title">Royal Curtain House</span>
+          </a>
           <p class="footer-text">Sri Lanka's architectural window treatment artisans since 1998. Showroom on Trincomalee Street, Matale with dedicated island-wide consultation, laser measurement, and installation services.</p>
           <span class="footer-tag">Handcrafted in Matale • Serving Island-Wide</span>
         </div>
@@ -269,6 +297,7 @@
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="collections.html">Collections</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="contact.html">Contact & Showroom</a></li>
           </ul>
