@@ -211,10 +211,19 @@ html.lenis, html.lenis body {
   --container-max: 1200px;
   --container-padding: clamp(16px, 4vw, 36px);
 
-  /* Transitions */
-  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-normal: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Emil Kowalski Design Engineering Signature Curves & Timings */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --duration-press: 140ms;
+  --duration-fast: 180ms;
+  --duration-normal: 240ms;
+  --duration-modal: 260ms;
+
+  --transition-fast: var(--duration-fast) var(--ease-out);
+  --transition-normal: var(--duration-normal) var(--ease-out);
+  --transition-slow: 0.45s var(--ease-out);
 }
 
 /* Obsidian Liquid Glass Dark Mode */
@@ -415,12 +424,17 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform var(--duration-press) var(--ease-out), background-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
   white-space: nowrap;
 }
 
 .btn:active {
   transform: scale(0.97) !important;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 2px;
 }
 
 .btn-primary {
@@ -430,10 +444,12 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
 }
 
-.btn-primary:hover {
-  background-color: var(--brand-green-hover);
-  color: #ffffff;
-  box-shadow: 0 8px 24px rgba(0, 122, 61, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    background-color: var(--brand-green-hover);
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 122, 61, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  }
 }
 
 .btn-secondary {
@@ -445,10 +461,12 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
 }
 
-.btn-secondary:hover {
-  color: var(--brand-green);
-  background: var(--glass-bg);
-  box-shadow: 0 8px 24px rgba(0, 122, 61, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+@media (hover: hover) and (pointer: fine) {
+  .btn-secondary:hover {
+    color: var(--brand-green);
+    background: var(--glass-bg);
+    box-shadow: 0 8px 24px rgba(0, 122, 61, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
 }
 
 .btn-link {
@@ -459,11 +477,14 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  transition: color var(--transition-fast);
 }
 
-.btn-link:hover {
-  color: var(--brand-green-hover);
-  text-decoration: underline;
+@media (hover: hover) and (pointer: fine) {
+  .btn-link:hover {
+    color: var(--brand-green-hover);
+    text-decoration: underline;
+  }
 }
 
 /* ==========================================================================
@@ -606,19 +627,30 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-soft);
   cursor: pointer;
   position: relative;
-  transition: background-color var(--transition-fast), color var(--transition-fast);
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--duration-press) var(--ease-out);
   flex-shrink: 0;
 }
 
-.theme-toggle:hover {
-  background: var(--brand-green-subtle);
-  color: var(--brand-green);
+.theme-toggle:active {
+  transform: scale(0.92);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover {
+    background: var(--brand-green-subtle);
+    color: var(--brand-green);
+  }
 }
 
 .theme-toggle svg {
   width: 18px;
   height: 18px;
-  transition: transform 0.3s ease, opacity 0.2s ease;
+  transition: transform var(--duration-fast) var(--ease-out), opacity var(--duration-fast) var(--ease-out);
 }
 
 .theme-toggle .sun-icon { display: none; }
@@ -643,6 +675,16 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   position: relative;
   z-index: 130;
+  transition: transform var(--duration-press) var(--ease-out), background-color var(--transition-fast);
+}
+
+.nav-toggle:active {
+  transform: scale(0.92);
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 2px;
 }
 
 .nav-toggle span {
@@ -650,7 +692,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 20px;
   height: 2px;
   background-color: var(--text);
-  transition: transform var(--transition-fast), opacity var(--transition-fast);
+  transition: transform var(--duration-fast) var(--ease-out), opacity var(--duration-fast) var(--ease-out);
 }
 
 .nav-toggle.open span:nth-child(1) {
@@ -922,12 +964,23 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
   color: var(--text-soft);
   cursor: pointer;
-  transition: background-color var(--transition-fast), color var(--transition-fast), transform 0.2s ease;
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--duration-press) var(--ease-out), box-shadow var(--transition-fast);
 }
 
-.filter-tab:hover {
-  color: var(--brand-green);
-  background: var(--glass-bg);
+.filter-tab:active {
+  transform: scale(0.96);
+}
+
+.filter-tab:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .filter-tab:not(.active):hover {
+    color: var(--brand-green);
+    background: var(--glass-bg);
+  }
 }
 
 .filter-tab.active {
@@ -953,7 +1006,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  transition: transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
 }
 
 /* Shimmer Light Reflection Sweep on Hover */
@@ -966,22 +1019,24 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
   transform: skewX(-25deg);
-  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.75s var(--ease-out);
   pointer-events: none;
   z-index: 2;
 }
 
-.product-card:hover::after, .service-feature-card:hover::after {
-  transform: translate3d(380%, 0, 0) skewX(-25deg);
-}
+@media (hover: hover) and (pointer: fine) {
+  .product-card:hover::after, .service-feature-card:hover::after {
+    transform: translate3d(380%, 0, 0) skewX(-25deg);
+  }
 
-.product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
-}
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  }
 
-[data-theme="dark"] .product-card:hover {
-  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  [data-theme="dark"] .product-card:hover {
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
 }
 
 .product-card.hidden {
@@ -1442,10 +1497,18 @@ h1, h2, h3, h4, h5, h6 {
   gap: 10px;
   text-decoration: none;
   margin-bottom: 12px;
+  color: #ffffff !important;
+}
+
+.footer-logo:visited,
+.footer-logo:hover,
+.footer-logo:active {
+  color: #ffffff !important;
 }
 
 .footer-logo .footer-brand-title {
   margin-bottom: 0;
+  color: #ffffff !important;
 }
 
 .footer-brand-title {
@@ -1457,11 +1520,15 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 12px;
 }
 
-.footer-text {
-  color: rgba(245, 243, 239, 0.72);
-  line-height: 1.65;
+/* Lighter tone used under the logo text applied consistently across all columns */
+.footer-text,
+.footer-address,
+.footer-links a,
+.footer-bottom {
+  color: rgba(245, 243, 239, 0.72) !important;
   font-size: 0.88rem;
-  margin-bottom: 16px;
+  line-height: 1.65;
+  font-weight: 400;
 }
 
 .footer-heading {
@@ -1470,7 +1537,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #ffffff !important;
   margin-bottom: 16px;
 }
 
@@ -1481,14 +1548,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-links a {
-  color: rgba(245, 243, 239, 0.72);
-  font-size: 0.88rem;
   text-decoration: none;
-  transition: color var(--transition-fast);
+  display: inline-block;
+  transition: color var(--transition-fast), transform var(--duration-press) var(--ease-out);
 }
 
-.footer-links a:hover {
-  color: var(--brand-green);
+@media (hover: hover) and (pointer: fine) {
+  .footer-links a:hover {
+    color: #ffffff !important;
+    transform: translateX(3px);
+  }
 }
 
 .footer-bottom {
@@ -1498,7 +1567,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: space-between;
   font-size: 0.8rem;
-  color: rgba(245, 243, 239, 0.48);
+  color: rgba(245, 243, 239, 0.52) !important;
   flex-wrap: wrap;
   gap: 12px;
 }
@@ -1528,7 +1597,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(100%);
     visibility: hidden;
     pointer-events: none;
-    transition: transform var(--transition-normal), visibility var(--transition-normal);
+    transition: transform 0.2s var(--ease-drawer), visibility 0.2s var(--ease-drawer);
     box-shadow: var(--shadow-lg);
     overflow-y: auto;
   }
@@ -1541,6 +1610,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(0);
     visibility: visible;
     pointer-events: auto;
+    transition: transform 0.28s var(--ease-drawer), visibility 0.28s var(--ease-drawer);
   }
 
   .nav-links a:not(.btn) {
@@ -1969,18 +2039,33 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  transition: transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
   position: relative;
   overflow: hidden;
 }
 
-.gallery-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+.gallery-card:active {
+  transform: scale(0.985);
 }
 
-[data-theme="dark"] .gallery-card:hover {
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+.gallery-card:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gallery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  [data-theme="dark"] .gallery-card:hover {
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  }
+
+  .gallery-card:hover .gallery-image-wrap img {
+    transform: scale(1.04);
+  }
 }
 
 .gallery-image-wrap {
@@ -1996,12 +2081,8 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.5s var(--ease-out);
   display: block;
-}
-
-.gallery-card:hover .gallery-image-wrap img {
-  transform: scale(1.05);
 }
 
 .gallery-badge {
@@ -2094,13 +2175,14 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+  transition: opacity 0.18s var(--ease-out), visibility 0.18s var(--ease-out);
 }
 
 .gallery-modal-overlay.open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  transition: opacity var(--duration-modal) var(--ease-out), visibility var(--duration-modal) var(--ease-out);
 }
 
 .gallery-modal-card {
@@ -2116,12 +2198,14 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  transform: translateY(24px) scale(0.97);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+  transform: translateY(14px) scale(0.96);
+  transition: transform 0.18s var(--ease-out);
 }
 
 .gallery-modal-overlay.open .gallery-modal-card {
   transform: translateY(0) scale(1);
+  transition: transform var(--duration-modal) var(--ease-out);
 }
 
 .gallery-modal-close {
@@ -2143,12 +2227,23 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   z-index: 10;
   box-shadow: var(--glass-specular);
-  transition: background-color var(--transition-fast), color var(--transition-fast);
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--duration-press) var(--ease-out);
 }
 
-.gallery-modal-close:hover {
-  background: var(--brand-red);
-  color: #ffffff;
+.gallery-modal-close:active {
+  transform: scale(0.92);
+}
+
+.gallery-modal-close:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gallery-modal-close:hover {
+    background: var(--brand-red);
+    color: #ffffff;
+  }
 }
 
 .gallery-modal-media {
